@@ -5,7 +5,7 @@ html, body{
 .grid-container {
     display: grid;
     grid-template-columns: 120px 1fr 40px;
-    grid-template-rows: 80px 1fr 68px 180px;
+    grid-template-rows: 80px .85fr 68px 120px;
     width: 550px;
     height: 610px;
     grid-template-areas: 
