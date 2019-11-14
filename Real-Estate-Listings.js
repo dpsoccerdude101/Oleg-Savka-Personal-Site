@@ -32,7 +32,7 @@ function validateForm() {
     document.getElementById("dream").setAttribute("disabled", "");
     called = false;
   }
-
+    
   return false;
 };
  function sendToJava (str) {
@@ -47,8 +47,8 @@ var jsConnector = {
 function getJsConnector() {
     return jsConnector;
 };
-function resetDisabled() {
-    document.getElementById("notDream").setAttribute("disabled");
+function Reset() {
+    document.getElementById("notDream").setAttribute("disabled", "");
     document.getElementById("dream").setAttribute("type", "submit");
     document.getElementById("notDream").removeAttribute("type", "submit");
     document.getElementById("dream").removeAttribute("disabled", "");
@@ -58,3 +58,5 @@ function remove() {
   document.getElementById("notDream").setAttribute("type", "submit");
   called = true;
 };
+const form = document.getElementById("RealEstateForm");
+form.onreset = Reset;
