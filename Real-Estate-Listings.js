@@ -25,6 +25,9 @@ function validateForm() {
   console.log(queryString);
   //prevent form submission
   sendToJava(queryString);
+
+  document.getElementById("notDream").removeAttribute('disabled');
+  
   return false;
 };
  function sendToJava (str) {
@@ -38,4 +41,7 @@ var jsConnector = {
 };
 function getJsConnector() {
     return jsConnector;
+};
+function resetDisabled() {
+    document.getElementById("notDream").setAttribute("enabled", "");
 };
