@@ -13,7 +13,7 @@
         <h1>Real Estate Listings</h1>
       </header>
       <section class="inputArea">
-        <form action="" id="RealEstateForm" onsubmit="return validateForm()"> 
+        <form action="" id="RealEstateForm" onsubmit="event.preventDefault();validateForm(); "> 
           <fieldset>
             <div>
               <label for=""
@@ -60,7 +60,7 @@
           Not my dream - find me another!
         </button>
         <!-- DONT FORGET TO REMOVE DISABLED ATTRIBUTE ON FIND ANOTHER HOME BUTTON -->
-        <button type="reset" id="reset" form="RealEstateForm" onclick="resetDisabled()">Reset</button>
+        <button type="reset" id="reset" form="RealEstateForm">Reset</button>
       </div>
     </div>
   </body>
