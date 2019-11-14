@@ -26,9 +26,6 @@ function validateForm() {
   //prevent form submission
   sendToJava(queryString);
 
-  document.getElementById("notDream").removeAttribute('disabled');
-  document.getElementById("dream").removeAttribute('type', 'submit');
-  document.getElementById("notDream").setAttribute('type', 'submit');
   return false;
 };
  function sendToJava (str) {
@@ -45,6 +42,11 @@ function getJsConnector() {
 };
 function resetDisabled() {
     document.getElementById("notDream").setAttribute("disabled");
-    document.getElementById("dream").setAttribute('type', 'submit');
-    document.getElementById("notDream").removeAttribute('type', 'submit');
+    document.getElementById("dream").setAttribute("type", "submit");
+    document.getElementById("notDream").removeAttribute("type", "submit");
+};
+function remove() {
+  document.getElementById("notDream").removeAttribute("disabled");
+  document.getElementById("dream").removeAttribute("type", "submit");
+  document.getElementById("notDream").setAttribute("type", "submit");
 };
