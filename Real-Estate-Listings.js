@@ -28,7 +28,7 @@ function validateForm() {
   return false;
 };
  function sendToJava (str) {
-    javaConnector.toLowerCase(str);
+    javaConnector.toJava(str);
 }; 
 
 var jsConnector = {
