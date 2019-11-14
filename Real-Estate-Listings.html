@@ -53,14 +53,14 @@
         <div id="output"></div>
       </div>
       <div class="buttons">
-        <button type="submit" form="RealEstateForm" id="dream">
+        <button type="submit" form="RealEstateForm" id="dream" onclick="remove()">
           Find my dream house!
         </button>
-        <button disabled="disabled" id="notDream">
+        <button disabled="disabled" id="notDream" form="RealEstateForm">
           Not my dream - find me another!
         </button>
         <!-- DONT FORGET TO REMOVE DISABLED ATTRIUTE ON FIND ANOTHER HOME BUTTON -->
-        <button type="reset" id="reset" form="RealEstateForm" onreset="return resetDisabled()">Reset</button>
+        <button type="reset" id="reset" form="RealEstateForm" onreset="resetDisabled()">Reset</button>
       </div>
     </div>
   </body>
