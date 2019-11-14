@@ -1,3 +1,4 @@
+var queryString;
 function validateForm() {
   var formElement = document.forms.RealEstateForm;
   var formData = new FormData(formElement);
@@ -20,23 +21,21 @@ function validateForm() {
     keypairs.push(pair[0] + "=" + pair[1]);
     count++;
   }
-  var queryString = keypairs.join("&");
+   queryString = keypairs.join("&");
   console.log(queryString);
   //prevent form submission
+  sendToJava(queryString);
   return false;
-  javaConnector.toLowerCase(queryString);
 };
-/* function sendToJava () {
-    //var s = document.getElementById('input').value;
-    
-}; */
+ function sendToJava (str) {
+    javaConnector.toLowerCase(str);
+}; 
 
 var jsConnector = {
     showResult: function (result) {
-        //document.getElementById('result').innerHTML = result;
+        document.getElementById('output').innerHTML = result;
     }
 };
-
 function getJsConnector() {
     return jsConnector;
 };
