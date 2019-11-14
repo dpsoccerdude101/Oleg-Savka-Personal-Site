@@ -1,4 +1,5 @@
 var queryString;
+var called = false;
 function validateForm() {
   var formElement = document.forms.RealEstateForm;
   var formData = new FormData(formElement);
@@ -26,6 +27,12 @@ function validateForm() {
   //prevent form submission
   sendToJava(queryString);
 
+  if (called) {
+    document.getElementById("dream").removeAttribute("type", "submit");
+    document.getElementById("dream").setAttribute("disabled", "");
+    called = false;
+  }
+
   return false;
 };
  function sendToJava (str) {
@@ -34,7 +41,7 @@ function validateForm() {
 
 var jsConnector = {
     showResult: function (result) {
-        document.getElementById('output').innerHTML = ("<span class='error'>" + result + "</span>");
+        document.getElementById('output').innerHTML = result;
     }
 };
 function getJsConnector() {
@@ -48,7 +55,6 @@ function resetDisabled() {
 };
 function remove() {
   document.getElementById("notDream").removeAttribute("disabled");
-  document.getElementById("dream").removeAttribute("type", "submit");
-  document.getElementById("dream").setAttribute("disabled", "");
   document.getElementById("notDream").setAttribute("type", "submit");
+  called = true;
 };
