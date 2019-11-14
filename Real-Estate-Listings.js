@@ -44,9 +44,11 @@ function resetDisabled() {
     document.getElementById("notDream").setAttribute("disabled");
     document.getElementById("dream").setAttribute("type", "submit");
     document.getElementById("notDream").removeAttribute("type", "submit");
+    document.getElementById("dream").removeAttribute("disabled", "");
 };
 function remove() {
   document.getElementById("notDream").removeAttribute("disabled");
   document.getElementById("dream").removeAttribute("type", "submit");
+  document.getElementById("dream").setAttribute("disabled", "");
   document.getElementById("notDream").setAttribute("type", "submit");
 };
