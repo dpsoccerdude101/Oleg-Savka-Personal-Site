@@ -34,7 +34,7 @@ function validateForm() {
 
 var jsConnector = {
     showResult: function (result) {
-        document.getElementById('output').innerHTML = result;
+        document.getElementById('output').innerHTML = ("<span class='error'>" + result + "</span>");
     }
 };
 function getJsConnector() {
