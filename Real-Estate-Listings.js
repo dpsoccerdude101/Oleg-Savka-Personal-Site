@@ -24,4 +24,19 @@ function validateForm() {
   console.log(queryString);
   //prevent form submission
   return false;
-}
+  sendToJava(queryString);
+};
+function sendToJava () {
+    //var s = document.getElementById('input').value;
+    javaConnector.toLowerCase(queryString);
+};
+
+var jsConnector = {
+    showResult: function (result) {
+        //document.getElementById('result').innerHTML = result;
+    }
+};
+
+function getJsConnector() {
+    return jsConnector;
+};
