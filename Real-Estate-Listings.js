@@ -24,12 +24,12 @@ function validateForm() {
   console.log(queryString);
   //prevent form submission
   return false;
-  sendToJava(queryString);
+  javaConnector.toLowerCase(queryString);
 };
-function sendToJava () {
+/* function sendToJava () {
     //var s = document.getElementById('input').value;
-    javaConnector.toLowerCase(queryString);
-};
+    
+}; */
 
 var jsConnector = {
     showResult: function (result) {
