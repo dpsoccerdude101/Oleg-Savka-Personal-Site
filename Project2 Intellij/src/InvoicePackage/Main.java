@@ -1,38 +1,28 @@
 package InvoicePackage;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-
+import javafx.application.Application;
+import javafx.concurrent.Worker;
+import javafx.concurrent.Worker.State;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.EventTarget;
 
-
-//import org.w3c.dom.Document;
-//import org.w3c.dom.Element;
-//import org.w3c.dom.events.*;
-
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker;
-import javafx.concurrent.Worker.State;
-import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.geometry.Insets;
-import javafx.stage.Stage;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class Main extends Application {
     // for communication to the Javascript engine.
     private JSObject javascriptConnector;
+
     private HouseList houseList = new HouseList("C:\\Users\\denni\\eclipse-workspace\\Project01\\src\\project01\\houses.txt");
 
     private ArrayList<House> matchedHouses = new ArrayList<House>();
@@ -55,7 +45,7 @@ public class Main extends Application {
 
         URL url = null;
         try {
-            url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Real-Estate-Listings.html");
+            url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Project2%20Intellij/Real-Estate-Listings.html");
             System.out.print(url.toExternalForm());
             webEngine.load(url.toExternalForm());
         } catch (MalformedURLException e) {
