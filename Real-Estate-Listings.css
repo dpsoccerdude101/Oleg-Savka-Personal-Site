@@ -95,6 +95,7 @@ fieldset>div>label {
     height: 45px;
     margin: 0 0 0 30px;
     text-align: center;
+    padding: 1em;
 }
 /* #chosenHome {
     grid-row: 3;
