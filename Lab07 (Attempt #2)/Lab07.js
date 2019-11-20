@@ -1,5 +1,4 @@
 var queryString;
-var called = false;
 function validateForm() {
   var formElement = document.forms.Invoice;
   var formData = new FormData(formElement);
@@ -15,15 +14,7 @@ function validateForm() {
    queryString = keypairs.join("&");
   console.log(queryString);
   //prevent form submission
-  sendToJava(queryString);
-
-  if (called) {
-    document.getElementById("dream").removeAttribute("type", "submit");
-    document.getElementById("dream").setAttribute("disabled", "");
-    called = false;
-  }
-    
-  return false;
+  sendToJava(queryString); 
 };
  function sendToJava (str) {
     javaConnector.toJava(str);
@@ -37,7 +28,7 @@ var jsConnector = {
 function getJsConnector() {
     return jsConnector;
 };
-function Reset() {
+/* function Reset() {
     document.getElementById("notDream").setAttribute("disabled", "");
     document.getElementById("dream").setAttribute("type", "submit");
     document.getElementById("notDream").removeAttribute("type", "submit");
@@ -49,4 +40,4 @@ function remove() {
   called = true;
 };
 const form = document.getElementById("RealEstateForm");
-form.onreset = Reset;
+form.onreset = Reset; */
