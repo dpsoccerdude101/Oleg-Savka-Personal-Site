@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="Lab07.css" />
     <title>Lab07</title>
+    <script src="Lab07.js"></script>
   </head>
   <body>
     <div class="grid-container">
@@ -13,7 +14,7 @@
         <h1>Mom and Pop's Clothing Store</h1>
       </div>
       <div class="form">
-        <form action="" name="Invoice">
+        <form id="Invoice" onsubmit="event.preventDefault();validateForm();">
           <fieldset>
             <label for="shirts"
               >Shirts<input type="number" name="shirts" id="shirts"

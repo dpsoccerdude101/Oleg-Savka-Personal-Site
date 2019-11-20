@@ -1,0 +1,21 @@
+.grid-container {
+    display: grid;
+    width: 295px;
+    height: 255px;
+    grid-template-areas: 
+    "title"
+    "input"
+    "submit"
+    ;
+    grid-template-columns: 295px;
+
+}
+.title {
+    grid-area: title;
+}
+.input {
+    grid-area: input;
+}
+.submit {
+    grid-area: submit;
+}
