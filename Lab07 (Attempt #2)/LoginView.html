@@ -13,13 +13,19 @@
         <h1>Mom and Pop's Clothing Store</h1>
       </div>
       <div class="input">
-        <form action="" name="userForm" id="userForm">
-          <input type="text" name="username" id="username" />
-          <input type="password" name="password" id="password" />
+        <form action="" name="userForm" id="userForm" onsubmit="event.preventDefault();">
+          <div class="username">
+            <label for="username" id="usernameLabel">User ID:</label>
+            <input type="text" name="username" id="username" required/>
+          </div>
+          <div class="password">
+            <label for="password" id="passwordLabel">Password:</label>
+            <input type="password" name="password" id="password" required/>
+          </div>
         </form>
       </div>
       <div class="submit">
-          <button type="submit">Submit</button>
+        <button type="submit" form="userForm">Submit</button>
       </div>
     </div>
   </body>

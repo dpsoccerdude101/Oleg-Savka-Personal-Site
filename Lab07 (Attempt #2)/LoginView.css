@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+body {
+    font-family: 'Raleway', sans-serif;
+}
 .grid-container {
     display: grid;
     width: 295px;
@@ -8,14 +12,42 @@
     "submit"
     ;
     grid-template-columns: 295px;
+    border: 1px solid black;
 
 }
 .title {
     grid-area: title;
+}
+h1 {
+    text-align: center;
+    margin: 10px;
+    color: #577935;
+}
+form {
+    margin: 0 4px;
 }
 .input {
     grid-area: input;
 }
 .submit {
     grid-area: submit;
+    text-align: right;
+    margin: 0 45px 0 0;
+}
+form {
+    display: table;
+}
+div.username {
+    display: table-row;
+}
+div.password {
+    display: table-row;
+}
+#usernameLabel, #passwordLabel {
+    display: table-cell;
+}
+#username, #password {
+    display: table-cell;
+    margin: 8px;
+    border-radius: 4px;
 }

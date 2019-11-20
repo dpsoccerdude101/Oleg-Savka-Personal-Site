@@ -105,7 +105,7 @@ public class Main extends Application {
             invoice = new Invoice(tokensDouble[0], tokensDouble[1], tokensDouble[2], tokensDouble[3], tokensDouble[4]);
 
             if (this.value != null) {
-                javascriptConnector.call("showResult", invoice.getTotalBill());
+                javascriptConnector.call("showResult", String.format("%.2f", invoice.getTotalBill()));
             }
         }
     }
