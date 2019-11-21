@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="LoginView.css" />
+    <script src="LoginView.js"></script>
     <title>Login</title>
   </head>
   <body>
@@ -13,7 +14,7 @@
         <h1>Mom and Pop's Clothing Store</h1>
       </div>
       <div class="input">
-        <form action="" name="userForm" id="userForm" onsubmit="event.preventDefault();">
+        <form action="" name="userForm" id="userForm" onsubmit="event.preventDefault();validateForm()">
           <div class="username">
             <label for="username" id="usernameLabel">User ID:</label>
             <input type="text" name="username" id="username" required/>

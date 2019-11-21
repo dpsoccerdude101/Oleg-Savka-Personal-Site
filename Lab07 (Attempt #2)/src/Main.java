@@ -1,7 +1,6 @@
 
 import javafx.application.Application;
 import javafx.concurrent.Worker;
-import javafx.concurrent.Worker.State;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -9,22 +8,45 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.events.EventListener;
-import org.w3c.dom.events.EventTarget;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Main extends Application {
+public class Main<inputLine> extends Application {
     // for communication to the Javascript engine.
     private JSObject javascriptConnector;
     private Invoice invoice;
     // for communication from the Javascript engine. //
     private JavaConnector javaConnector = new JavaConnector();
-    public static void main(String[] args) {
+
+    private ArrayList<User> usersList = new ArrayList<User>();
+
+    private static String getUserDataFile () throws IOException {
+        URL users = new URL("Users.txt");
+        BufferedReader input = new BufferedReader(new InputStreamReader(users.openStream()));
+        StringBuilder sb = new StringBuilder(1024);
+        String inputLine;
+        while ((inputLine = input.readLine()) != null) {
+            sb.append(inputLine);
+            sb.append(" ");
+            System.out.println(inputLine);
+        }
+        input.close();
+        return sb.toString();
+    }
+
+    public static void main(String[] args) throws IOException {
+        String userText = getUserDataFile();
+        
         launch(args);
     }
 
@@ -94,7 +116,21 @@ public class Main extends Application {
          * @param value
          *         the String to convert
          */
-        public void toJava(String value) {
+        public void toJavaData(String value) {
+            this.value = value;
+            String[] tokens = value.split("&");
+            Double[] tokensDouble = new Double[tokens.length];
+            for (int count = 0; count < tokens.length; count++) {
+                String[] miniTokens = tokens[count].split("=");
+                tokensDouble[count] = Double.parseDouble(miniTokens[1]);
+            }
+            invoice = new Invoice(tokensDouble[0], tokensDouble[1], tokensDouble[2], tokensDouble[3], tokensDouble[4]);
+
+            if (this.value != null) {
+                javascriptConnector.call("showResult", String.format("%.2f", invoice.getTotalBill()));
+            }
+        }
+        public void toJavaLogin(String value) {
             this.value = value;
             String[] tokens = value.split("&");
             Double[] tokensDouble = new Double[tokens.length];
