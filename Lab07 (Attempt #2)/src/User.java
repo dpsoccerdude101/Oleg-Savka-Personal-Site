@@ -10,4 +10,10 @@ public class User {
     public User getUser() {
         return this;
     }
+    public String getUsername() {
+        return this.username;
+    }
+    public String getPassword() {
+        return this.password;
+    }
 }

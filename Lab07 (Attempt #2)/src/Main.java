@@ -113,6 +113,18 @@ public class Main<inputLine> extends Application {
         input.close();
         return list;
     }
+    private static boolean contains (User thatUser) {
+        for (int count = 0; count < usersList.size(); count++) {
+            User tempUser = usersList.get(count);
+            if (tempUser.getUsername().equals(thatUser.getUsername())) {
+                if (tempUser.getPassword().equals(thatUser.getPassword())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public class JavaConnector {
 
         private String value;
@@ -144,8 +156,9 @@ public class Main<inputLine> extends Application {
             user = new User(pair.getKey(), pair.getValue());
             System.out.println(pair.getKey() + " " + pair.getValue());
 
-            if (usersList.contains(user)) {
+            if (contains(user)) {
                 javascriptConnector.call("goToQueryPage");
+                System.out.println("Yes it contains");
             }
             else
                 javascriptConnector.call("loginFailed");
