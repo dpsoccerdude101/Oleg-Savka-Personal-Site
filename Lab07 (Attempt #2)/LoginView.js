@@ -1,5 +1,6 @@
 var queryString;
-function validateForm() {
+function validateLogin() {
+    alert("Connected");
   var formElement = document.forms.userForm;
   var formData = new FormData(formElement);
   var keypairs = [];

@@ -28,15 +28,7 @@ var jsConnector = {
 function getJsConnector() {
     return jsConnector;
 };
- function Reset() {
+ function reset() {
             //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
             window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html","_self");
 };
-
-/*function remove() {
-  document.getElementById("notDream").removeAttribute("disabled");
-  document.getElementById("notDream").setAttribute("type", "submit");
-  called = true;
-};*/
-const form = document.getElementById("Invoice");
-form.onreset = Reset; 
