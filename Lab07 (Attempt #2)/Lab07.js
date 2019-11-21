@@ -17,7 +17,7 @@ function validateForm() {
   sendToJava(queryString); 
 };
  function sendToJava (str) {
-    javaConnector.toJava(str);
+    javaConnector.toJavaData(str);
 }; 
 
 var jsConnector = {
@@ -28,16 +28,15 @@ var jsConnector = {
 function getJsConnector() {
     return jsConnector;
 };
-/* function Reset() {
-    document.getElementById("notDream").setAttribute("disabled", "");
-    document.getElementById("dream").setAttribute("type", "submit");
-    document.getElementById("notDream").removeAttribute("type", "submit");
-    document.getElementById("dream").removeAttribute("disabled", "");
+ function Reset() {
+            //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
+            window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html","_self");
 };
-function remove() {
+
+/*function remove() {
   document.getElementById("notDream").removeAttribute("disabled");
   document.getElementById("notDream").setAttribute("type", "submit");
   called = true;
-};
-const form = document.getElementById("RealEstateForm");
-form.onreset = Reset; */
+};*/
+const form = document.getElementById("Invoice");
+form.onreset = Reset; 

@@ -7,6 +7,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import netscape.javascript.JSObject;
 
 import java.io.BufferedReader;
@@ -19,34 +20,26 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Main<inputLine> extends Application {
     // for communication to the Javascript engine.
     private JSObject javascriptConnector;
     private Invoice invoice;
+    private User user;
     // for communication from the Javascript engine. //
     private JavaConnector javaConnector = new JavaConnector();
 
-    private ArrayList<User> usersList = new ArrayList<User>();
-
-    private static String getUserDataFile () throws IOException {
-        URL users = new URL("Users.txt");
-        BufferedReader input = new BufferedReader(new InputStreamReader(users.openStream()));
-        StringBuilder sb = new StringBuilder(1024);
-        String inputLine;
-        while ((inputLine = input.readLine()) != null) {
-            sb.append(inputLine);
-            sb.append(" ");
-            System.out.println(inputLine);
-        }
-        input.close();
-        return sb.toString();
-    }
+    private static ArrayList<User> usersList = new ArrayList<User>();
 
     public static void main(String[] args) throws IOException {
-        String userText = getUserDataFile();
-        
+        List<String> info = getUserDataFile();
+        Iterator iterator = info.iterator();
+        for (int count = 0; count < info.size(); count++){
+            String[] userInfo = (info.get(count)).split(" ");
+            usersList.add(new User(userInfo[0], userInfo[1]));
+        }
         launch(args);
     }
 
@@ -107,6 +100,18 @@ public class Main<inputLine> extends Application {
         // set up the listener
 
     }
+    private static ArrayList<String> getUserDataFile () throws IOException {
+        URL users = new URL("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/Lab07%20(Attempt%20%232)/Users.txt");
+        BufferedReader input = new BufferedReader(new InputStreamReader(users.openStream()));
+        ArrayList<String> list = new ArrayList<>();
+        String inputLine;
+        while ((inputLine = input.readLine()) != null) {
+            list.add(inputLine);
+            System.out.println(inputLine);
+        }
+        input.close();
+        return list;
+    }
     public class JavaConnector {
 
         private String value;
@@ -127,22 +132,21 @@ public class Main<inputLine> extends Application {
             invoice = new Invoice(tokensDouble[0], tokensDouble[1], tokensDouble[2], tokensDouble[3], tokensDouble[4]);
 
             if (this.value != null) {
-                javascriptConnector.call("showResult", String.format("%.2f", invoice.getTotalBill()));
+                javascriptConnector.call("showResult", ("$" + String.format("%.2f", invoice.getTotalBill())));
             }
         }
         public void toJavaLogin(String value) {
             this.value = value;
             String[] tokens = value.split("&");
-            Double[] tokensDouble = new Double[tokens.length];
-            for (int count = 0; count < tokens.length; count++) {
-                String[] miniTokens = tokens[count].split("=");
-                tokensDouble[count] = Double.parseDouble(miniTokens[1]);
-            }
-            invoice = new Invoice(tokensDouble[0], tokensDouble[1], tokensDouble[2], tokensDouble[3], tokensDouble[4]);
+            Pair<String, String> pair = new Pair<>((tokens[0].split("="))[1], (tokens[1].split("="))[1]);
+            user = new User(pair.getKey(), pair.getValue());
 
-            if (this.value != null) {
-                javascriptConnector.call("showResult", String.format("%.2f", invoice.getTotalBill()));
+
+            if (usersList.contains(user)) {
+                javascriptConnector.call("goToQueryPage");
             }
+            else
+                javascriptConnector.call("loginFailed");
         }
     }
 }
