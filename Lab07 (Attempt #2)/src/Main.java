@@ -79,8 +79,9 @@ public class Main extends Application {
         pane.getChildren().add(browser);
         pane.setPrefWidth(550);
         pane.setPrefHeight(610);
-        //200, 250
-        Scene scene = new Scene(pane, 600, 650);
+        //550, 610
+        Scene scene = new Scene(pane, 320, 500);
+        //600, 650
         primaryStage.setScene(scene);
 
         primaryStage.show();

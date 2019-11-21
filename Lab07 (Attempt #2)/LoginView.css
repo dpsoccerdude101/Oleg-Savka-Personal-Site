@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 body {
     font-family: 'Raleway', sans-serif;
+    margin: 0;
     width: 100%;
 }
 .grid-container {
@@ -14,7 +15,7 @@ body {
     ;
     grid-template-columns: 295px;
     border: 1px solid black;
-    margin: auto auto;
+    margin: 0;
 
 }
 .title {
@@ -24,9 +25,6 @@ h1 {
     text-align: center;
     margin: 10px;
     color: #577935;
-}
-form {
-    margin: 0 4px;
 }
 .input {
     grid-area: input;
@@ -38,6 +36,7 @@ form {
 }
 form {
     display: table;
+    margin: 0 4px;
 }
 div.username {
     display: table-row;
