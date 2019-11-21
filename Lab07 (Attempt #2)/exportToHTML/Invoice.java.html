@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Invoice.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #0000ff;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Invoice.java</font>
+</center></td></tr></table>
+<pre><span class="s0">public class </span>Invoice {
+    <span class="s0">private double </span>shirtsTotal;
+    <span class="s0">private double </span>pantsTotal;
+    <span class="s0">private double </span>tiesTotal;
+    <span class="s0">private double </span>shoesTotal;
+    <span class="s0">private double </span>salesTax;
+    <span class="s0">private double </span>totalBill;
+    <span class="s2">//3.00 to 9.50, in increments of 0.25</span>
+    <span class="s0">public </span>Invoice (<span class="s0">double </span>shirtsTotal, <span class="s0">double </span>pantsTotal, <span class="s0">double </span>tiesTotal, <span class="s0">double </span>shoesTotal, <span class="s0">double </span>salesTax){
+        <span class="s0">this</span>.shirtsTotal = shirtsTotal;
+        <span class="s0">this</span>.pantsTotal = pantsTotal;
+        <span class="s0">this</span>.tiesTotal = tiesTotal;
+        <span class="s0">this</span>.shoesTotal = shoesTotal;
+        <span class="s0">this</span>.salesTax = salesTax;
+        <span class="s0">this</span>.totalBill = (<span class="s0">this</span>.shirtsTotal + <span class="s0">this</span>.pantsTotal + <span class="s0">this</span>.tiesTotal + <span class="s0">this</span>.shoesTotal) * ((<span class="s0">this</span>.salesTax / <span class="s3">100.0</span>) + <span class="s3">1.0</span>);
+    }
+    <span class="s0">public </span>String toString() {
+        <span class="s0">return </span><span class="s4">&quot;hello&quot;</span>;
+    }
+    <span class="s0">public double </span>getTotalBill() {
+        <span class="s0">return </span>totalBill;
+    }
+}
+</pre>
+</body>
+</html>

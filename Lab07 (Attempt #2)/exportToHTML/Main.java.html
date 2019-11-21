@@ -1,0 +1,186 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000000;}
+.s1 { color: #000080; font-weight: bold;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #0000ff;}
+.s4 { color: #008000; font-weight: bold;}
+.s5 { color: #808080; font-weight: bold; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">import </span>javafx.application.Application;
+<span class="s1">import </span>javafx.concurrent.Worker;
+<span class="s1">import </span>javafx.geometry.Insets;
+<span class="s1">import </span>javafx.scene.Scene;
+<span class="s1">import </span>javafx.scene.layout.StackPane;
+<span class="s1">import </span>javafx.scene.web.WebEngine;
+<span class="s1">import </span>javafx.scene.web.WebView;
+<span class="s1">import </span>javafx.stage.Stage;
+<span class="s1">import </span>javafx.util.Pair;
+<span class="s1">import </span>netscape.javascript.JSObject;
+
+<span class="s1">import </span>java.io.BufferedReader;
+<span class="s1">import </span>java.io.File;
+<span class="s1">import </span>java.io.IOException;
+<span class="s1">import </span>java.io.InputStreamReader;
+<span class="s1">import </span>java.net.MalformedURLException;
+<span class="s1">import </span>java.net.URL;
+<span class="s1">import </span>java.nio.charset.StandardCharsets;
+<span class="s1">import </span>java.nio.file.Files;
+<span class="s1">import </span>java.nio.file.Paths;
+<span class="s1">import </span>java.util.ArrayList;
+<span class="s1">import </span>java.util.Iterator;
+<span class="s1">import </span>java.util.List;
+
+<span class="s1">public class </span>Main <span class="s1">extends </span>Application {
+    <span class="s2">// for communication to the Javascript engine.</span>
+    <span class="s1">private </span>JSObject javascriptConnector;
+    <span class="s1">private </span>Invoice invoice;
+    <span class="s1">private </span>User user;
+    <span class="s2">// for communication from the Javascript engine. //</span>
+    <span class="s1">private </span>JavaConnector javaConnector = <span class="s1">new </span>JavaConnector();
+
+    <span class="s1">private static </span>ArrayList&lt;User&gt; usersList = <span class="s1">new </span>ArrayList&lt;User&gt;();
+
+    <span class="s1">public static void </span>main(String[] args) <span class="s1">throws </span>IOException {
+        List&lt;String&gt; info = getUserDataFile();
+        Iterator iterator = info.iterator();
+        <span class="s1">for </span>(<span class="s1">int </span>count = <span class="s3">0</span>; count &lt; info.size(); count++){
+            String[] userInfo = (info.get(count)).split(<span class="s4">&quot; &quot;</span>);
+            usersList.add(<span class="s1">new </span>User(userInfo[<span class="s3">0</span>], userInfo[<span class="s3">1</span>]));
+        }
+        launch(args);
+    }
+
+    @Override
+    <span class="s1">public void </span>start(Stage primaryStage) {
+        primaryStage.setTitle(<span class="s4">&quot;Mom and Pop's Clothing Store&quot;</span>);
+        StackPane pane = <span class="s1">new </span>StackPane ();
+        pane.setPadding(<span class="s1">new </span>Insets(<span class="s3">15</span>, <span class="s3">5</span>, <span class="s3">5</span>, <span class="s3">5</span>));
+
+        <span class="s1">final </span>WebView browser = <span class="s1">new </span>WebView();
+        <span class="s2">// final WebEngine webEngine = browser.getEngine();</span>
+        WebEngine webEngine = browser.getEngine();
+
+        URL url = <span class="s1">null</span>;
+        <span class="s1">try </span>{
+            <span class="s2">//url = new URL(&quot;https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html&quot;);</span>
+            url = <span class="s1">new </span>URL(<span class="s4">&quot;https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html&quot;</span>);
+            <span class="s2">//System.out.print(url.toExternalForm());</span>
+            webEngine.load(url.toExternalForm());
+        } <span class="s1">catch </span>(MalformedURLException e) {
+            <span class="s2">// TODO Auto-generated catch block</span>
+            e.printStackTrace();
+            webEngine.loadContent(<span class="s4">&quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;There's a bloody error.&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+        }
+        webEngine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) -&gt; {
+            <span class="s1">if </span>(Worker.State.SUCCEEDED == newValue) {
+                <span class="s2">// set an interface object named 'javaConnector' in the web engine's page</span>
+                JSObject window = (JSObject) webEngine.executeScript(<span class="s4">&quot;window&quot;</span>);
+                window.setMember(<span class="s4">&quot;javaConnector&quot;</span>, javaConnector);
+
+                <span class="s2">// get the Javascript connector object.</span>
+                javascriptConnector = (JSObject) webEngine.executeScript(<span class="s4">&quot;getJsConnector()&quot;</span>);
+            }
+        });
+
+
+        pane.getChildren().add(browser);
+        pane.setPrefWidth(<span class="s3">550</span>);
+        pane.setPrefHeight(<span class="s3">610</span>);
+        <span class="s2">//200, 250</span>
+        Scene scene = <span class="s1">new </span>Scene(pane, <span class="s3">600</span>, <span class="s3">650</span>);
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
+
+<span class="s2">/*        webEngine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -&gt; { 
+            if (newState == State.SUCCEEDED) { 
+                EventListener listener = new EventListener() { 
+                    @Override 
+                    public void handleEvent(org.w3c.dom.events.Event ev) { 
+                        //matchedHouses.clear(); 
+                    } 
+                }; 
+                Document doc = webEngine.getDocument(); 
+                Element reset = doc.getElementById(&quot;reset&quot;); 
+                ((EventTarget) reset).addEventListener(&quot;click&quot;, listener, false); 
+            } 
+        });*/</span>
+        <span class="s2">// set up the listener</span>
+
+    }
+    <span class="s1">private static </span>ArrayList&lt;String&gt; getUserDataFile () <span class="s1">throws </span>IOException {
+        URL users = <span class="s1">new </span>URL(<span class="s4">&quot;https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/Lab07%20(Attempt%20%232)/Users.txt&quot;</span>);
+        BufferedReader input = <span class="s1">new </span>BufferedReader(<span class="s1">new </span>InputStreamReader(users.openStream()));
+        ArrayList&lt;String&gt; list = <span class="s1">new </span>ArrayList&lt;&gt;();
+        String inputLine;
+        <span class="s1">while </span>((inputLine = input.readLine()) != <span class="s1">null</span>) {
+            list.add(inputLine);
+        }
+        input.close();
+        <span class="s1">return </span>list;
+    }
+    <span class="s1">private static boolean </span>contains (User thatUser) {
+        <span class="s1">for </span>(<span class="s1">int </span>count = <span class="s3">0</span>; count &lt; usersList.size(); count++) {
+            User tempUser = usersList.get(count);
+            <span class="s1">if </span>(tempUser.getUsername().equals(thatUser.getUsername())) {
+                <span class="s1">if </span>(tempUser.getPassword().equals(thatUser.getPassword())) {
+                    <span class="s1">return true</span>;
+                }
+            }
+        }
+        <span class="s1">return false</span>;
+    }
+
+    <span class="s1">public class </span>JavaConnector {
+
+        <span class="s1">private </span>String value;
+        <span class="s2">/**</span>
+         <span class="s2">* called when the JS side wants a String to be converted.</span>
+         <span class="s2">*</span>
+         <span class="s2">* </span><span class="s5">@param </span><span class="s2">value</span>
+         <span class="s2">*         the String to convert</span>
+         <span class="s2">*/</span>
+        <span class="s1">public void </span>toJavaData(String value) {
+            <span class="s1">this</span>.value = value;
+            String[] tokens = value.split(<span class="s4">&quot;&amp;&quot;</span>);
+            Double[] tokensDouble = <span class="s1">new </span>Double[tokens.length];
+            <span class="s1">for </span>(<span class="s1">int </span>count = <span class="s3">0</span>; count &lt; tokens.length; count++) {
+                String[] miniTokens = tokens[count].split(<span class="s4">&quot;=&quot;</span>);
+                tokensDouble[count] = Double.parseDouble(miniTokens[<span class="s3">1</span>]);
+            }
+            invoice = <span class="s1">new </span>Invoice(tokensDouble[<span class="s3">0</span>], tokensDouble[<span class="s3">1</span>], tokensDouble[<span class="s3">2</span>], tokensDouble[<span class="s3">3</span>], tokensDouble[<span class="s3">4</span>]);
+
+            <span class="s1">if </span>(<span class="s1">this</span>.value != <span class="s1">null</span>) {
+                javascriptConnector.call(<span class="s4">&quot;showResult&quot;</span>, (<span class="s4">&quot;$&quot; </span>+ String.format(<span class="s4">&quot;%.2f&quot;</span>, invoice.getTotalBill())));
+            }
+        }
+        <span class="s1">public void </span>toJavaLogin(String value) {
+            <span class="s1">this</span>.value = value;
+            String[] tokens = value.split(<span class="s4">&quot;&amp;&quot;</span>);
+            Pair&lt;String, String&gt; pair = <span class="s1">new </span>Pair&lt;&gt;((tokens[<span class="s3">0</span>].split(<span class="s4">&quot;=&quot;</span>))[<span class="s3">1</span>], (tokens[<span class="s3">1</span>].split(<span class="s4">&quot;=&quot;</span>))[<span class="s3">1</span>]);
+            user = <span class="s1">new </span>User(pair.getKey(), pair.getValue());
+
+            <span class="s1">if </span>(contains(user)) {
+                javascriptConnector.call(<span class="s4">&quot;goToQueryPage&quot;</span>);
+            }
+            <span class="s1">else</span>
+                javascriptConnector.call(<span class="s4">&quot;loginFailed&quot;</span>);
+        }
+    }
+}
+
+</pre>
+</body>
+</html>

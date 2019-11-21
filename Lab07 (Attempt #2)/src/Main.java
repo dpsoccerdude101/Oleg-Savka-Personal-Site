@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Main<inputLine> extends Application {
+public class Main extends Application {
     // for communication to the Javascript engine.
     private JSObject javascriptConnector;
     private Invoice invoice;
