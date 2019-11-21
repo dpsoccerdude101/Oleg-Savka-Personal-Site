@@ -40,6 +40,7 @@ public class Main<inputLine> extends Application {
             String[] userInfo = (info.get(count)).split(" ");
             usersList.add(new User(userInfo[0], userInfo[1]));
         }
+        System.out.println("okey");
         launch(args);
     }
 
@@ -55,7 +56,8 @@ public class Main<inputLine> extends Application {
 
         URL url = null;
         try {
-            url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
+            //url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
+            url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
             System.out.print(url.toExternalForm());
             webEngine.load(url.toExternalForm());
         } catch (MalformedURLException e) {
@@ -107,7 +109,6 @@ public class Main<inputLine> extends Application {
         String inputLine;
         while ((inputLine = input.readLine()) != null) {
             list.add(inputLine);
-            System.out.println(inputLine);
         }
         input.close();
         return list;
@@ -136,11 +137,12 @@ public class Main<inputLine> extends Application {
             }
         }
         public void toJavaLogin(String value) {
+            System.out.println("java connected");
             this.value = value;
             String[] tokens = value.split("&");
             Pair<String, String> pair = new Pair<>((tokens[0].split("="))[1], (tokens[1].split("="))[1]);
             user = new User(pair.getKey(), pair.getValue());
-
+            System.out.println(pair.getKey() + " " + pair.getValue());
 
             if (usersList.contains(user)) {
                 javascriptConnector.call("goToQueryPage");

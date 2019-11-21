@@ -13,17 +13,24 @@ function validateForm() {
   }
    queryString = keypairs.join("&");
   console.log(queryString);
-  
+
   //prevent form submission
   sendToJava(queryString); 
 };
  function sendToJava (str) {
-    javaConnector.toJava(str);
+    javaConnector.toJavaLogin(str);
 }; 
 
 var jsConnector = {
     showResult: function (result) {
         document.getElementById('output').innerHTML = result;
+    },
+    goToQueryPage: function() {
+        //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
+        window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html","_self");
+    },
+    loginFailed: function() {
+        alert("You have entered an invalid User ID or Password.");
     }
 };
 function getJsConnector() {
