@@ -65,7 +65,6 @@ public class Main extends Application {
         try {
             //url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
             url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
-            //System.out.print(url.toExternalForm());
             webEngine.load(url.toExternalForm());
         } catch (MalformedURLException e) {
             // TODO Auto-generated catch block
@@ -77,7 +76,7 @@ public class Main extends Application {
                 // set an interface object named 'javaConnector' in the web engine's page
                 JSObject window = (JSObject) webEngine.executeScript("window");
                 window.setMember("javaConnector", javaConnector);
-                System.out.println("Java Connector functions");
+
                 // get the Javascript connector object.
                 javascriptConnector = (JSObject) webEngine.executeScript("getJsConnector()");
             }
@@ -102,36 +101,27 @@ public class Main extends Application {
                 //if so then check if passed or failed
                 Document doc = webEngine.getDocument();
                 Element title = (Element) doc.getElementById("title");
-                System.out.println("Login Compare " + title.getTextContent().compareTo("Login"));
-                System.out.println("Lab07 Compare " + title.getTextContent().compareTo("Lab07"));
                 EventListener listener = new EventListener() {
                     @Override
                     public void handleEvent(org.w3c.dom.events.Event ev) {
                         //changeDimension synthetic event has been called
                         //Therefore, if title == Lab07, then the new dimensions = those of Login
                         //and vice versa
-                        System.out.println("Handled Events Title" + title.getTextContent());
+
                         if ((title.getTextContent().equals("Lab07"))) {
-                            System.out.println(primaryStage.getWidth() + "set width");
-                            primaryStage.setWidth(310);
-                            primaryStage.setHeight(280);
+                            primaryStage.setWidth(330);
+                            primaryStage.setHeight(295);
                         }
                         if (((title.getTextContent().equals("Login")))) {
-                            System.out.println(primaryStage.getWidth() + "set width");
                             primaryStage.setWidth(600);
                             primaryStage.setHeight(650);
-                            System.out.println("plz do it");
                         }
                     }
                 };
-
                 Element button = (Element) doc.getElementById("back");
-                //textcontent = login
                 ((EventTarget) button).addEventListener("changeDimensions", listener, false);
             }
         });
-        // set up the listener
-
     }
     private static ArrayList<String> getUserDataFile () throws IOException {
         URL users = new URL("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/Lab07%20(Attempt%20%232)/Users.txt");
@@ -160,10 +150,10 @@ public class Main extends Application {
 
         private String value;
         /**
-         * called when the JS side wants a String to be converted.
+         * called when the JS side wants a String to be read.
          *
          * @param value
-         *         the String to convert
+         *         the String to read
          */
         public void toJavaData(String value) {
             this.value = value;
@@ -195,7 +185,6 @@ public class Main extends Application {
                 loginPassed = false;
                 javascriptConnector.call("loginFailed");
             }
-
         }
     }
 }

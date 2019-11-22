@@ -1,5 +1,7 @@
 body {
     margin: 0; 
+    width: 550px;
+    height: 600px;
  }
 .grid-container {
   display: grid;
@@ -8,8 +10,8 @@ body {
     "form"
     "total"
     "gridBtns";
-  width: 550px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   grid-template-columns: 1fr;
   grid-template-rows: 70px 360px 80px 145px;
   border: 1px solid black;
