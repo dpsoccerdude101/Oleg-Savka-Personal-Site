@@ -34,6 +34,7 @@ public class Main extends Application {
     private User user;
     private int preferredWidth;
     private int preferredHeight;
+    boolean loginPassed = false;
 
     // for communication from the Javascript engine. //
     private JavaConnector javaConnector = new JavaConnector();
@@ -89,31 +90,44 @@ public class Main extends Application {
         Scene scene = new Scene(pane, preferredWidth, preferredHeight);
         //600, 650
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
 
         primaryStage.show();
 
         webEngine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED) {
+                //if login screen is presented
+                //then check if toJavaLogin method has been called
+                //if not then wait for it to be called
+                //if so then check if passed or failed
                 Document doc = webEngine.getDocument();
                 Element title = (Element) doc.getElementById("title");
+                System.out.println("Login Compare " + title.getTextContent().compareTo("Login"));
+                System.out.println("Lab07 Compare " + title.getTextContent().compareTo("Lab07"));
                 EventListener listener = new EventListener() {
                     @Override
                     public void handleEvent(org.w3c.dom.events.Event ev) {
-                        if ((title.getTextContent().equals("Login"))) {
+                        //changeDimension synthetic event has been called
+                        //Therefore, if title == Lab07, then the new dimensions = those of Login
+                        //and vice versa
+                        System.out.println("Handled Events Title" + title.getTextContent());
+                        if ((title.getTextContent().equals("Lab07"))) {
+                            System.out.println(primaryStage.getWidth() + "set width");
                             primaryStage.setWidth(310);
                             primaryStage.setHeight(280);
                         }
-                        if ((title.getTextContent().equals("Lab07"))) {
+                        if (((title.getTextContent().equals("Login")))) {
+                            System.out.println(primaryStage.getWidth() + "set width");
                             primaryStage.setWidth(600);
                             primaryStage.setHeight(650);
+                            System.out.println("plz do it");
                         }
                     }
                 };
 
-                Element button = (Element) doc.getElementById("back");
-                //textcontet = login
-                System.out.println(title.getTextContent());
-                ((EventTarget) button).addEventListener("onclick", listener, false);
+                //Element button = (Element) doc.getElementById("back");
+                //textcontent = login
+                ((EventTarget) doc).addEventListener("changeDimensions", listener, false);
             }
         });
         // set up the listener
@@ -174,15 +188,14 @@ public class Main extends Application {
             if (contains(user)) {
                 preferredWidth = 600;
                 preferredHeight = 650;
+                loginPassed = true;
                 javascriptConnector.call("goToQueryPage");
             }
-            else
+            else {
+                loginPassed = false;
                 javascriptConnector.call("loginFailed");
-        }
-        public void toJavaDimensions(Integer width, Integer height) {
-            System.out.println("Width change");
-            preferredWidth = width;
-            preferredHeight = height;
+            }
+
         }
     }
 }
