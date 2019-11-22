@@ -20,7 +20,9 @@ function validateForm() {
  function sendToJava (str) {
     javaConnector.toJavaData(str);
 }; 
-
+function dispatchDimChange() {
+  document.getElementById("back").dispatchEvent(changeDim);
+}
 var jsConnector = {
     showResult: function (result) {
         document.getElementById('output').innerHTML = result;
@@ -32,5 +34,5 @@ function getJsConnector() {
  function reset() {
             //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
             window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html","_self");
-            elem.dispatchEvent(changeDim);
+            dispatchDimChange();
 };

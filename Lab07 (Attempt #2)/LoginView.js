@@ -31,13 +31,17 @@ var jsConnector = {
         //sends to Java code a call to reset screen size
         //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
         window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html","_self");
-        elem.dispatchEvent(changeDim);
+        dispatchDimChange();
         
     },
     loginFailed: function() {
         alert("You have entered an invalid User ID or Password.");
     }
 };
+function dispatchDimChange() {
+    document.getElementById("back").dispatchEvent(changeDim);
+}
+
 function getJsConnector() {
     return jsConnector;
 };

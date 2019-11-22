@@ -125,9 +125,9 @@ public class Main extends Application {
                     }
                 };
 
-                //Element button = (Element) doc.getElementById("back");
+                Element button = (Element) doc.getElementById("back");
                 //textcontent = login
-                ((EventTarget) doc).addEventListener("changeDimensions", listener, false);
+                ((EventTarget) button).addEventListener("changeDimensions", listener, false);
             }
         });
         // set up the listener
