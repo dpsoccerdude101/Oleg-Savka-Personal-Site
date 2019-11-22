@@ -56,6 +56,7 @@ public class Main extends Application {
 
         final WebView browser = new WebView();
         WebEngine webEngine = browser.getEngine();
+        webEngine.setJavaScriptEnabled(true);
         URL url = null;
         try {
             url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
