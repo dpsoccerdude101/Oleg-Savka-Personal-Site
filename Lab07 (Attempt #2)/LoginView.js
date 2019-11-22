@@ -1,4 +1,5 @@
 var queryString;
+var event = new Event('changeDimensions');
 function validateLogin() {
     alert("Connected");
   var formElement = document.forms.userForm;
@@ -27,9 +28,11 @@ var jsConnector = {
         document.getElementById('output').innerHTML = result;
     },
     goToQueryPage: function() {
+        //sends to Java code a call to reset screen size
+        elem.dispatchEvent(event);
         //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
         window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html","_self");
-        sendToJavaDimensions(600, 650);
+        
     },
     loginFailed: function() {
         alert("You have entered an invalid User ID or Password.");
@@ -38,6 +41,8 @@ var jsConnector = {
 function getJsConnector() {
     return jsConnector;
 };
-function sendToJavaDimensions(int1, int2) {
-    javaConnector.toJavaDimensions(int1, int2);
-  }
+
+
+
+// Dispatch the event.
+//dispatchEvent(event);

@@ -1,4 +1,5 @@
 var queryString;
+var event = new Event('changeDimensions');
 function validateForm() {
   var formElement = document.forms.Invoice;
   var formData = new FormData(formElement);
@@ -28,11 +29,8 @@ var jsConnector = {
 function getJsConnector() {
     return jsConnector;
 };
-function sendToJavaDimensions(int1, int2) {
-  javaConnector.toJavaDimensions(int1, int2);
-}
  function reset() {
+            elem.dispatchEvent(event);
             //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
             window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html","_self");
-            sendToJavaDimensions(310, 280);
 };
