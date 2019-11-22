@@ -29,7 +29,7 @@ var jsConnector = {
     goToQueryPage: function() {
         //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
         window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html","_self");
-        window.resizeTo(600, 650);
+        sendToJavaDimensions(600, 650);
     },
     loginFailed: function() {
         alert("You have entered an invalid User ID or Password.");
@@ -38,16 +38,6 @@ var jsConnector = {
 function getJsConnector() {
     return jsConnector;
 };
-/* function Reset() {
-    document.getElementById("notDream").setAttribute("disabled", "");
-    document.getElementById("dream").setAttribute("type", "submit");
-    document.getElementById("notDream").removeAttribute("type", "submit");
-    document.getElementById("dream").removeAttribute("disabled", "");
-};
-function remove() {
-  document.getElementById("notDream").removeAttribute("disabled");
-  document.getElementById("notDream").setAttribute("type", "submit");
-  called = true;
-};
-const form = document.getElementById("RealEstateForm");
-form.onreset = Reset; */
+function sendToJavaDimensions(int1, int2) {
+    javaConnector.toJavaDimensions(int1, int2);
+  }

@@ -85,9 +85,7 @@ public class Main extends Application {
         preferredWidth = 310;
         preferredHeight = 280;
         pane.getChildren().add(browser);
-        //pane.setPrefWidth(550);
-        //pane.setPrefHeight(610);
-        //550, 610
+
         Scene scene = new Scene(pane, preferredWidth, preferredHeight);
         //600, 650
         primaryStage.setScene(scene);
@@ -96,18 +94,26 @@ public class Main extends Application {
 
         webEngine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED) {
+                Document doc = webEngine.getDocument();
+                Element title = (Element) doc.getElementById("title");
                 EventListener listener = new EventListener() {
                     @Override
                     public void handleEvent(org.w3c.dom.events.Event ev) {
-                        primaryStage.setWidth(preferredWidth);
-                        primaryStage.setHeight(preferredHeight);
+                        if ((title.getTextContent().equals("Login"))) {
+                            primaryStage.setWidth(310);
+                            primaryStage.setHeight(280);
+                        }
+                        if ((title.getTextContent().equals("Lab07"))) {
+                            primaryStage.setWidth(600);
+                            primaryStage.setHeight(650);
+                        }
                     }
                 };
 
-
-                Document doc = webEngine.getDocument();
-                Element title = (Element) doc.getElementById("title");
-                ((EventTarget) title).addEventListener("onchange", listener, false);
+                Element button = (Element) doc.getElementById("back");
+                //textcontet = login
+                System.out.println(title.getTextContent());
+                ((EventTarget) button).addEventListener("onclick", listener, false);
             }
         });
         // set up the listener
@@ -174,6 +180,7 @@ public class Main extends Application {
                 javascriptConnector.call("loginFailed");
         }
         public void toJavaDimensions(Integer width, Integer height) {
+            System.out.println("Width change");
             preferredWidth = width;
             preferredHeight = height;
         }
