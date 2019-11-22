@@ -30,7 +30,7 @@ function getJsConnector() {
     return jsConnector;
 };
  function reset() {
-            elem.dispatchEvent(changeDim);
             //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
             window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html","_self");
+            elem.dispatchEvent(changeDim);
 };

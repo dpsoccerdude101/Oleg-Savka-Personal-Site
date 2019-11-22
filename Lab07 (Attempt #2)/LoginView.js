@@ -1,7 +1,7 @@
 var queryString;
 var changeDim = new Event('changeDimensions');
 function validateLogin() {
-    alert("Connected");
+    console.log("validateLogin");
   var formElement = document.forms.userForm;
   var formData = new FormData(formElement);
   var keypairs = [];
@@ -29,9 +29,9 @@ var jsConnector = {
     },
     goToQueryPage: function() {
         //sends to Java code a call to reset screen size
-        elem.dispatchEvent(changeDim);
         //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
         window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html","_self");
+        elem.dispatchEvent(changeDim);
         
     },
     loginFailed: function() {
