@@ -104,12 +104,12 @@ public class Main extends Application {
                         //and vice versa
 
                         if ((title.getTextContent().equals("Lab07"))) {
-                            primaryStage.setWidth(330);
-                            primaryStage.setHeight(305);
+                            primaryStage.setWidth(325);
+                            primaryStage.setHeight(315);
                         }
                         if (((title.getTextContent().equals("Login")))) {
-                            primaryStage.setWidth(592);
-                            primaryStage.setHeight(665);
+                            primaryStage.setWidth(572);
+                            primaryStage.setHeight(660);
                         }
                     }
                 };
