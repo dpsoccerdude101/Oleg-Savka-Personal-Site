@@ -3,6 +3,8 @@ import javafx.application.Application;
 import javafx.concurrent.Worker;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -39,8 +41,11 @@ public class Main extends Application {
     private static ArrayList<User> usersList = new ArrayList<User>();
 
     public static void main(String[] args) throws IOException {
+        //grabs username and password keys off of github repo
         List<String> info = getUserDataFile();
         Iterator iterator = info.iterator();
+
+        //adds those to list
         for (int count = 0; count < info.size(); count++){
             String[] userInfo = (info.get(count)).split(" ");
             usersList.add(new User(userInfo[0], userInfo[1]));
@@ -55,11 +60,9 @@ public class Main extends Application {
         pane.setPadding(new Insets(15, 5, 5, 5));
 
         final WebView browser = new WebView();
-        // final WebEngine webEngine = browser.getEngine();
         WebEngine webEngine = browser.getEngine();
         URL url = null;
         try {
-            //url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
             url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html");
             webEngine.load(url.toExternalForm());
         } catch (MalformedURLException e) {
@@ -87,6 +90,9 @@ public class Main extends Application {
         primaryStage.setResizable(false);
 
         primaryStage.show();
+
+        //allows for the display of alerts
+        browser.getEngine().setOnAlert(event -> showAlert(event.getData()));
 
         webEngine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED) {
@@ -140,7 +146,12 @@ public class Main extends Application {
         }
         return false;
     }
-
+    private void showAlert(String message) {
+        Dialog<Void> alert = new Dialog<>();
+        alert.getDialogPane().setContentText(message);
+        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        alert.showAndWait();
+    }
     public class JavaConnector {
 
         private String value;
