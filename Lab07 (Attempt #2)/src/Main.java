@@ -77,7 +77,7 @@ public class Main extends Application {
                 // set an interface object named 'javaConnector' in the web engine's page
                 JSObject window = (JSObject) webEngine.executeScript("window");
                 window.setMember("javaConnector", javaConnector);
-
+                System.out.println("Java Connector functions");
                 // get the Javascript connector object.
                 javascriptConnector = (JSObject) webEngine.executeScript("getJsConnector()");
             }

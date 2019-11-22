@@ -1,5 +1,5 @@
 var queryString;
-var event = new Event('changeDimensions');
+var changeDim = new Event('changeDimensions');
 function validateLogin() {
     alert("Connected");
   var formElement = document.forms.userForm;
@@ -29,7 +29,7 @@ var jsConnector = {
     },
     goToQueryPage: function() {
         //sends to Java code a call to reset screen size
-        elem.dispatchEvent(event);
+        elem.dispatchEvent(changeDim);
         //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
         window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html","_self");
         
