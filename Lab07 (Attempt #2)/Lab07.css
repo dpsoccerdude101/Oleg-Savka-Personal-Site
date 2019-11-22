@@ -2,6 +2,8 @@ body {
     margin: 0; 
     width: 550px;
     height: 600px;
+    overflow-x: hidden;
+    overflow-y: hidden;
  }
 .grid-container {
   display: grid;

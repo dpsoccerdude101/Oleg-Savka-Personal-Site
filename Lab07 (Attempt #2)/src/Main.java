@@ -32,9 +32,6 @@ public class Main extends Application {
     private JSObject javascriptConnector;
     private Invoice invoice;
     private User user;
-    private int preferredWidth;
-    private int preferredHeight;
-    boolean loginPassed = false;
 
     // for communication from the Javascript engine. //
     private JavaConnector javaConnector = new JavaConnector();
@@ -60,7 +57,6 @@ public class Main extends Application {
         final WebView browser = new WebView();
         // final WebEngine webEngine = browser.getEngine();
         WebEngine webEngine = browser.getEngine();
-
         URL url = null;
         try {
             //url = new URL("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
@@ -82,11 +78,10 @@ public class Main extends Application {
             }
         });
 
-        preferredWidth = 310;
-        preferredHeight = 280;
         pane.getChildren().add(browser);
 
-        Scene scene = new Scene(pane, preferredWidth, preferredHeight);
+
+        Scene scene = new Scene(pane, 300, 265);
         //600, 650
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
@@ -110,11 +105,11 @@ public class Main extends Application {
 
                         if ((title.getTextContent().equals("Lab07"))) {
                             primaryStage.setWidth(330);
-                            primaryStage.setHeight(295);
+                            primaryStage.setHeight(305);
                         }
                         if (((title.getTextContent().equals("Login")))) {
-                            primaryStage.setWidth(600);
-                            primaryStage.setHeight(650);
+                            primaryStage.setWidth(592);
+                            primaryStage.setHeight(665);
                         }
                     }
                 };
@@ -176,13 +171,9 @@ public class Main extends Application {
             user = new User(pair.getKey(), pair.getValue());
 
             if (contains(user)) {
-                preferredWidth = 600;
-                preferredHeight = 650;
-                loginPassed = true;
                 javascriptConnector.call("goToQueryPage");
             }
             else {
-                loginPassed = false;
                 javascriptConnector.call("loginFailed");
             }
         }
