@@ -9,6 +9,10 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import netscape.javascript.JSObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.events.EventListener;
+import org.w3c.dom.events.EventTarget;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,6 +32,9 @@ public class Main extends Application {
     private JSObject javascriptConnector;
     private Invoice invoice;
     private User user;
+    private int preferredWidth;
+    private int preferredHeight;
+
     // for communication from the Javascript engine. //
     private JavaConnector javaConnector = new JavaConnector();
 
@@ -75,30 +82,34 @@ public class Main extends Application {
             }
         });
 
-
+        preferredWidth = 310;
+        preferredHeight = 280;
         pane.getChildren().add(browser);
-        pane.setPrefWidth(550);
-        pane.setPrefHeight(610);
+        //pane.setPrefWidth(550);
+        //pane.setPrefHeight(610);
         //550, 610
-        Scene scene = new Scene(pane, 320, 500);
+        Scene scene = new Scene(pane, preferredWidth, preferredHeight);
         //600, 650
         primaryStage.setScene(scene);
 
         primaryStage.show();
 
-/*        webEngine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
-            if (newState == State.SUCCEEDED) {
+        webEngine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -> {
+            if (newState == Worker.State.SUCCEEDED) {
                 EventListener listener = new EventListener() {
                     @Override
                     public void handleEvent(org.w3c.dom.events.Event ev) {
-                        //matchedHouses.clear();
+                        primaryStage.setWidth(preferredWidth);
+                        primaryStage.setHeight(preferredHeight);
                     }
                 };
+
+
                 Document doc = webEngine.getDocument();
-                Element reset = doc.getElementById("reset");
-                ((EventTarget) reset).addEventListener("click", listener, false);
+                Element title = (Element) doc.getElementById("title");
+                ((EventTarget) title).addEventListener("onchange", listener, false);
             }
-        });*/
+        });
         // set up the listener
 
     }
@@ -155,10 +166,16 @@ public class Main extends Application {
             user = new User(pair.getKey(), pair.getValue());
 
             if (contains(user)) {
+                preferredWidth = 600;
+                preferredHeight = 650;
                 javascriptConnector.call("goToQueryPage");
             }
             else
                 javascriptConnector.call("loginFailed");
+        }
+        public void toJavaDimensions(Integer width, Integer height) {
+            preferredWidth = width;
+            preferredHeight = height;
         }
     }
 }

@@ -29,6 +29,7 @@ var jsConnector = {
     goToQueryPage: function() {
         //window.location.assign("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html");
         window.open("https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/Lab07.html","_self");
+        window.resizeTo(600, 650);
     },
     loginFailed: function() {
         alert("You have entered an invalid User ID or Password.");
