@@ -38,7 +38,6 @@ public class Main extends Application {
     public static void main(String[] args) throws IOException {
         //grabs username and password keys off of github repo
         List<String> info = getUserDataFile();
-        Iterator iterator = info.iterator();
 
         //adds those to list
         for (int count = 0; count < info.size(); count++){

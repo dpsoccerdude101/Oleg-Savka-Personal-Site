@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Invoice
+comment1.params=shirtsTotal\ pantsTotal\ tiesTotal\ shoesTotal\ salesTax
+comment1.target=Invoice(double,\ double,\ double,\ double,\ double)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=double\ getTotalBill()
+numComments=4

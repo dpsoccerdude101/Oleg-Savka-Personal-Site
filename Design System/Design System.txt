@@ -1,0 +1,8 @@
+Lil Peep Background Color: 
+	Lightest Shade: #FFD36E
+	Medium Shade: #FAC54F
+	Darkest Shade: #EAAB17
+Lil Peep Hair: 
+	Lightest Shade: #F3B1C0
+	Medium Shade: #C1504E
+	Darkest Shade: #C9425A
