@@ -1,0 +1,12 @@
+flex-nav {
+    display: grid;
+    grid-template-areas: 
+    
+    ;
+}
+.organizers {
+    grid-area: organizers;
+}
+.fundManagers {
+    grid-area: fundManagers;
+}
