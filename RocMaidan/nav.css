@@ -9,7 +9,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
 }
 li,
 a,
@@ -28,17 +28,18 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 30px 10%;
+    padding: 0px 10%;
+    background-color: var(--bg-color);
 }
 img {
     max-width:100%;
     height:auto;
-    border-radius: 50%;
-    border: 10px solid var(--font-color);
+    /* border-radius: 50%; */
+    /* border: 10px solid var(--font-color); */
 }
 #div-image {
-   height: 57px;
-   width: 57px; 
+   height: 55px;
+   width: 96px; 
 }
 .social-container {
     display: grid;
