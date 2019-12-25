@@ -32,9 +32,42 @@ img {
     height:auto;
 }
 #div-image {
-   height: 70px;
-   width: 70px; 
+   height: 38px;
+   width: 38px; 
 }
+.social-container {
+    display: grid;
+    row-gap: 4px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas: 
+    "button"
+    "social"
+    ;
+}
+#social {
+    grid-area: social;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+#donate {
+    grid-area: button;
+}
+/* #facebook {
+    grid-area: facebook;
+}
+#twitter {
+    grid-area: twitter;
+}
+#instagram {
+    grid-area: instagram;
+}
+#search {
+    grid-area: search;
+} */
+
 .logo {
     cursor: pointer;
     margin-right: auto;
