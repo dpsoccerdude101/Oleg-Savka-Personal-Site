@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500&display=swap");
 :root {
-    --font-color: #edf8f1;
-    --bg-color: #06065B;
-    --bg-yellow: rgba(249,195,0,1);
-    --bg-light-yellow: rgba(249,195,0,0.75);
-  }
+  --font-color: #edf8f1;
+  --bg-color: #06065b;
+  --bg-yellow: rgba(249, 195, 0, 1);
+  --bg-light-yellow: rgba(249, 195, 0, 0.75);
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,126 +19,130 @@ button {
   font-size: 16px;
   color: var(--font-color);
   text-decoration: none;
-  
 }
 i {
-    color: var(--font-color);
+  color: var(--font-color);
 }
 header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0px 10%;
-    background-color: var(--bg-color);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10%;
+  background-color: var(--bg-color);
 }
 img {
-    max-width:100%;
-    height:auto;
-    /* border-radius: 50%; */
-    /* border: 10px solid var(--font-color); */
+  max-width: 100%;
+  height: auto;
+  /* border-radius: 50%; */
+  /* border: 10px solid var(--font-color); */
 }
 #div-image {
-   height: 79px;
-   width: 181px; 
+  height: auto;
+  width: 181px;
 }
 .social-container {
-    display: grid;
-    row-gap: 4px;
-    margin: 1em 0;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr;
-    grid-template-areas: 
+  display: grid;
+  row-gap: 4px;
+  margin: 1em 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas:
     "button"
-    "social"
-    ;
+    "social";
 }
 #social {
-    grid-area: social;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
+  grid-area: social;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
 }
 #donate {
-    grid-area: button;
+  grid-area: button;
 }
-/* #facebook {
-    grid-area: facebook;
-}
-#twitter {
-    grid-area: twitter;
-}
-#instagram {
-    grid-area: instagram;
-}
-#search {
-    grid-area: search;
-} */
-
 .logo {
-    cursor: pointer;
-    margin-right: auto;
+  cursor: pointer;
+  margin-right: auto;
 }
 .nav-links {
-    list-style: none;
+  list-style: none;
 }
 .nav-links li {
-    display: inline-block;
-    padding: 0px 4px;
+  display: inline-block;
+  padding: 0px 4px;
 }
 .nav-links li a {
-    transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 .nav-links li a:hover {
-    color: #0088a9;
+  color: #0088a9;
 }
 button {
-    padding: 9px 25px;
-    background-color: var(--bg-yellow);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-
+  padding: 9px 25px;
+  background-color: var(--bg-yellow);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
 }
 button:hover {
-    background-color: var(--bg-light-yellow);
+  background-color: var(--bg-light-yellow);
 }
 /* li + li::before {
     content: " | ";
 } */
 
-
 .flex-list {
-    position: relative;
-    margin: 1em;
-    overflow: hidden;
+  position: relative;
+  margin: 1em;
+  overflow: hidden;
 }
-.flex-list ul{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: -1px;
+.flex-list ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -1px;
 }
 .flex-list li {
-    flex-grow: 1;
-    flex-basis: auto;
-    text-align: center;
-    border-left: 1px solid var(--font-color);
+  flex-grow: 1;
+  flex-basis: auto;
+  text-align: center;
+  border-left: 1px solid var(--font-color);
 }
-
-
-
-/* flex-nav {
-    display: grid;
-    grid-template-areas: 
-    
-    ;
+.burger {
+  visibility: hidden;
 }
-.organizers {
-    grid-area: organizers;
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--font-color);
+  margin: 5px;
+  border-radius: 2px;
 }
-.fundManagers {
-    grid-area: fundManagers;
-} */
+@media screen and (max-width: 1024px) {
+  #div-image {
+    /* padding: 1% 1%; */
+    height: auto;
+  }
+  @media screen and (max-width: 768px) {
+    nav {
+      display: none;
+    }
+    .social-container {
+      display: none;
+    }
+    .burger {
+      visibility: visible;
+    }
+    #div-image {
+      height: auto;
+      width: 135.75px;
+      padding: 1%;
+    }
+    header {
+      padding: 0% 4%;
+      height: fit-content;
+    }
+  }
+}
