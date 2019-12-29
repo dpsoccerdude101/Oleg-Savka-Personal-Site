@@ -27,7 +27,7 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0px 10%;
+  padding: 0px 4%;
   background-color: var(--bg-color);
 }
 img {
@@ -93,8 +93,13 @@ button:hover {
 } */
 
 .flex-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  text-align: center;
+  align-items: center;
   position: relative;
-  margin: 1em;
+  margin: 0;
   overflow: hidden;
 }
 .flex-list ul {
@@ -103,6 +108,7 @@ button:hover {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-left: -1px;
+  margin-right: 1em;
 }
 .flex-list li {
   flex-grow: 1;
@@ -111,7 +117,7 @@ button:hover {
   border-left: 1px solid var(--font-color);
 }
 .burger {
-  visibility: hidden;
+  display: none;
 }
 .burger div {
   width: 25px;
@@ -125,24 +131,62 @@ button:hover {
     /* padding: 1% 1%; */
     height: auto;
   }
-  @media screen and (max-width: 768px) {
-    nav {
-      display: none;
-    }
-    .social-container {
-      display: none;
-    }
-    .burger {
-      visibility: visible;
-    }
-    #div-image {
-      height: auto;
-      width: 135.75px;
-      padding: 1%;
-    }
-    header {
-      padding: 0% 4%;
-      height: fit-content;
-    }
+  .flex-list ul {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .burger {
+    display: block;
+    z-index: 2;
+    cursor: pointer;
+  }
+  #div-image {
+    height: auto;
+    width: 135.75px;
+    padding: 1%;
+  }
+  header {
+    padding: 0% 4%;
+    height: fit-content;
+  }
+  .flex-list {
+    height: 0;
+    width: 0;
+    transition: width 1s ease-in-out;
+  }
+  .flex-list.open {
+    display: flex;
+    position: fixed;
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 35vw;
+    top: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.75);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    pointer-events: all;
+    /*     -webkit-transition:all .26s ease-in-out;
+    -moz-transition:all .26s ease-in-out;
+    -ms-transition:all .26s ease-in-out;
+    -o-transition:all .26s ease-in-out; */
+    transition: width 0.5s ease-in-out;
+  }
+  .flex-list ul {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 30vh;
+    /* margin: auto 0; */
+  }
+  .flex-list li {
+    color: black;
+    border: 0;
+    flex-grow: 1;
+    flex-basis: auto;
+    text-align: center;
   }
 }
