@@ -2,6 +2,7 @@
 :root {
   --font-color: #edf8f1;
   --bg-color: #06065b;
+  --bg-color-light: rgba(6, 6, 91, 0.75);
   --bg-yellow: rgba(249, 195, 0, 1);
   --bg-light-yellow: rgba(249, 195, 0, 0.75);
 }
@@ -9,7 +10,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* background-color: var(--bg-color); */
 }
 li,
 a,
@@ -33,8 +33,6 @@ header {
 img {
   max-width: 100%;
   height: auto;
-  /* border-radius: 50%; */
-  /* border: 10px solid var(--font-color); */
 }
 #div-image {
   height: auto;
@@ -88,10 +86,6 @@ button {
 button:hover {
   background-color: var(--bg-light-yellow);
 }
-/* li + li::before {
-    content: " | ";
-} */
-
 .flex-list {
   display: flex;
   flex-direction: row;
@@ -105,10 +99,10 @@ button:hover {
 .flex-list ul {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
   margin-left: -1px;
   margin-right: 1em;
+  white-space: nowrap;
 }
 .flex-list li {
   flex-grow: 1;
@@ -128,14 +122,35 @@ button:hover {
 }
 @media screen and (max-width: 1024px) {
   #div-image {
-    /* padding: 1% 1%; */
     height: auto;
+  }
+  a {
+    font-size: 16px;
+    transition: 1s;
+  }
+  .flex-list ul {
+    align-items: center;
+    flex-shrink: 2;
+  }
+}
+@media screen and (max-width: 850px) {
+  #div-image {
+    width: 108.6px;
+  }
+  .social-container {
+    margin: 0.5em 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .social-container {
+    margin: 1em 0;
   }
   .flex-list ul {
     margin-right: 0;
   }
-}
-@media screen and (max-width: 768px) {
+  a {
+    font-size: 16px;
+  }
   .burger {
     display: block;
     z-index: 2;
@@ -148,12 +163,33 @@ button:hover {
   }
   header {
     padding: 0% 4%;
-    height: fit-content;
+    height: 91.5px;
   }
-  .flex-list {
+  .flex-list{
     height: 0;
     width: 0;
     transition: width 1s ease-in-out;
+    pointer-events: none;
+  }
+  .flex-list.closed{
+    display: flex;
+    position: fixed;
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 0px;
+    top: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.75);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    pointer-events: all;
+    -webkit-transition: width 0.3s ease-in-out;
+    -moz-transition: width 0.3s ease-in-out;
+    -ms-transition: width 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
   }
   .flex-list.open {
     display: flex;
@@ -169,10 +205,10 @@ button:hover {
     flex-wrap: nowrap;
     justify-content: center;
     pointer-events: all;
-    /*     -webkit-transition:all .26s ease-in-out;
-    -moz-transition:all .26s ease-in-out;
-    -ms-transition:all .26s ease-in-out;
-    -o-transition:all .26s ease-in-out; */
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -ms-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
     transition: width 0.5s ease-in-out;
   }
   .flex-list ul {
@@ -180,13 +216,15 @@ button:hover {
     flex-wrap: nowrap;
     justify-content: space-between;
     height: 30vh;
-    /* margin: auto 0; */
+    overflow: hidden;
+    white-space: nowrap;
   }
   .flex-list li {
-    color: black;
     border: 0;
     flex-grow: 1;
     flex-basis: auto;
     text-align: center;
+    height: 0;
+    overflow: hidden;
   }
 }
