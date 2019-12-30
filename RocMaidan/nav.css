@@ -169,25 +169,24 @@ i {
     height: 91.5px;
   }
   .flex-list {
-    height: 0;
-    width: 0;
-    transition: width 1s ease-in-out;
-    pointer-events: none;
-  }
-  .flex-list.closed {
     box-shadow: inset 0px 2px white;
     display: flex;
     position: fixed;
+    height: 475px;
+    width: 0;
     margin: 0;
     overflow: hidden;
-    height: 475px;
-    width: 0px;
     top: 91.5px;
     right: 0px;
     background-color: var(--bg-color);
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-end;
+    transition: width 1s ease-in-out;
+    pointer-events: all;
+  }
+  .flex-list.closed {
+    width: 0px;
     pointer-events: all;
     -webkit-transition: width 0.3s ease-in-out;
     -moz-transition: width 0.3s ease-in-out;
@@ -196,20 +195,7 @@ i {
     transition: width 0.3s ease-in-out;
   }
   .flex-list.open {
-    box-shadow: inset 0px 2px white;
-    display: flex;
-    position: fixed;
-    margin: 0;
-    overflow: hidden;
-    height: 475px;
     width: 225px;
-    top: 91.5px;
-    right: 0px;
-    background-color: var(--bg-color);
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    pointer-events: all;
     -webkit-transition: width 0.5s ease-in-out;
     -moz-transition: width 0.5s ease-in-out;
     -ms-transition: width 0.5s ease-in-out;
@@ -242,4 +228,8 @@ i {
   #social {
     justify-content: flex-start;
   }
+  .social-container {
+    grid-template-rows: 3fr 3fr;
+  }
+
 }
