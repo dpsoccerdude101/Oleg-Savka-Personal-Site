@@ -87,7 +87,7 @@ button:hover {
   background-color: var(--bg-light-yellow);
 }
 i {
-    cursor: pointer;
+  cursor: pointer;
 }
 .flex-list {
   display: flex;
@@ -145,15 +145,15 @@ i {
   }
 }
 @media screen and (max-width: 768px) {
+  li,
+  a,
+  button {
+    font-size: 22px;
+  }
   .social-container {
     margin: 1em 0;
   }
-  .flex-list ul {
-    margin-right: 0;
-  }
-  a {
-    font-size: 16px;
-  }
+
   .burger {
     display: block;
     z-index: 2;
@@ -168,14 +168,14 @@ i {
     padding: 0% 4%;
     height: 91.5px;
   }
-  .flex-list{
+  .flex-list {
     height: 0;
     width: 0;
     transition: width 1s ease-in-out;
     pointer-events: none;
   }
-  .flex-list.closed{
-    box-shadow:inset 0px 2px white;
+  .flex-list.closed {
+    box-shadow: inset 0px 2px white;
     display: flex;
     position: fixed;
     margin: 0;
@@ -196,13 +196,13 @@ i {
     transition: width 0.3s ease-in-out;
   }
   .flex-list.open {
-    box-shadow:inset 0px 2px white;
+    box-shadow: inset 0px 2px white;
     display: flex;
     position: fixed;
     margin: 0;
     overflow: hidden;
     height: 475px;
-    width: 175px;
+    width: 225px;
     top: 91.5px;
     right: 0px;
     background-color: var(--bg-color);
@@ -236,9 +236,10 @@ i {
     overflow: hidden;
   }
   #social a {
-      display: flex;
+    font-size: 2em;
+    margin-right: auto;
   }
-  #social a>i {
-      flex-grow: 2;
+  #social {
+    justify-content: flex-start;
   }
 }
