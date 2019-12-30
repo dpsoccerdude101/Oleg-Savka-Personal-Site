@@ -123,6 +123,20 @@ i {
   margin: 5px;
   border-radius: 2px;
 }
+.flags {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-left: 1em;
+}
+.flag {
+  width: 100%;
+  height: auto;
+}
+.flag-image {
+  height: auto;
+  width: initial;
+}
 @media screen and (max-width: 1024px) {
   #div-image {
     height: auto;
@@ -134,6 +148,9 @@ i {
   .flex-list ul {
     align-items: center;
     flex-shrink: 2;
+  }
+  .flags {
+      margin-left: 0.5em;
   }
 }
 @media screen and (max-width: 850px) {
@@ -223,13 +240,27 @@ i {
   }
   #social a {
     font-size: 2em;
-    margin-right: auto;
+    /* margin-right: auto; */
   }
   #social {
-    justify-content: flex-start;
+    justify-content: space-between;
   }
   .social-container {
-    grid-template-rows: 3fr 3fr;
+    grid-template-rows: 1fr 1fr;
   }
-
+  .flags {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 0.75em;
+    margin-bottom: 1em;
+    margin-left: 0;
+  }
+  .flag {
+    width: 100%;
+    height: auto;
+  }
+  .flag-image {
+    height: auto;
+    width: 40px;
+  }
 }
