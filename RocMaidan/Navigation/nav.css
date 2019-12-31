@@ -13,12 +13,17 @@
 }
 li,
 a,
-button {
+button,
+p {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: var(--font-color);
   text-decoration: none;
+}
+body,
+html {
+  height: 100%;
 }
 i {
   color: var(--font-color);
@@ -137,7 +142,55 @@ i {
   height: auto;
   width: initial;
 }
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/banner.jpg");
+  
+  height: 70vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  filter: brightness(1.25);
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  -ms-flex-align: center;
+
+}
+.banner-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  -ms-flex-align: center;
+  height: 125px;
+/*   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+#donate-banner {
+  font-size: 22px;
+}
+#rocMaidanSquareLogo {
+  width: 65px;
+  height: auto;
+  border-radius: 50%;
+}
 @media screen and (max-width: 1024px) {
+  .banner {
+    height: 50vh;
+  }
   #div-image {
     height: auto;
   }
@@ -150,7 +203,7 @@ i {
     flex-shrink: 2;
   }
   .flags {
-      margin-left: 0.5em;
+    margin-left: 0.5em;
   }
 }
 @media screen and (max-width: 850px) {
