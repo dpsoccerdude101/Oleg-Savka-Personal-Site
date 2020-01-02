@@ -425,7 +425,6 @@ h2.about-us-header {
     height: auto;
     width: 40px;
   }
-
   .about-us {
     padding-top: 6vh;
     padding-bottom: 6vh;
@@ -434,35 +433,17 @@ h2.about-us-header {
   }
   .about-us-div {
     height: auto;
-    /* width: 47.67156%; */
     grid-column: 1 / 2;
     grid-row: 1 / -1;
-  }
-  .about-us-img {
-    max-width: 100%;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .about-us-box {
     height: auto;
     grid-column: 2 / 3;
     grid-row: 1 / -1;
-    
-    font-size: 1.65vw;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    padding: 1em;
-    background-color: white;
-  }
-  .about-us-paragraph {
-    margin-top: 1em;
-    /* font-size: 1.25vw; */
-  }
-  h2.about-us-header {
-    text-align: center;
-    color: rgb(47, 84, 150);
-    font-weight: bold;
-    text-decoration: underline;
+    font-size: 2vw;
+    padding: 0.25em;
   }
 }
