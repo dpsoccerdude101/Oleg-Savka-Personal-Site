@@ -33,7 +33,7 @@ body,
 html {
   height: 100%;
 }
-i {
+.icon {
   color: var(--header-font-color);
 }
 main {
@@ -104,6 +104,12 @@ img {
 }
 .nav-links li a:hover {
   color: #0088a9;
+}
+.icon:hover {
+  color: #0088a9;
+}
+.icon {
+  transition: all 0.3s ease 0s;
 }
 button {
   padding: 9px 25px;
@@ -243,10 +249,9 @@ i {
   max-width: 100%;
   height: auto;
 }
-.about-us{
-  padding-top: 60px;
-  padding-bottom: 60px;
-  position: relative;
+.about-us {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
   display: grid;
   grid-template-columns: repeat(44, 1fr);
   grid-template-rows: repeat(110, 1fr);
@@ -318,9 +323,10 @@ h2.about-us-header {
   }
 }
 @media screen and (max-width: 768px) {
-  li,
-  a,
-  button {
+  header li,
+  header a,
+  header button,
+  header p {
     font-size: 22px;
   }
   .social-container {
@@ -418,5 +424,45 @@ h2.about-us-header {
   .flag-image {
     height: auto;
     width: 40px;
+  }
+
+  .about-us {
+    padding-top: 6vh;
+    padding-bottom: 6vh;
+    grid-template-columns: 389fr 427fr;
+    grid-template-rows: 1fr;
+  }
+  .about-us-div {
+    height: auto;
+    /* width: 47.67156%; */
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+  }
+  .about-us-img {
+    max-width: 100%;
+    height: auto;
+  }
+  .about-us-box {
+    height: auto;
+    grid-column: 2 / 3;
+    grid-row: 1 / -1;
+    
+    font-size: 1.65vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 1em;
+    background-color: white;
+  }
+  .about-us-paragraph {
+    margin-top: 1em;
+    /* font-size: 1.25vw; */
+  }
+  h2.about-us-header {
+    text-align: center;
+    color: rgb(47, 84, 150);
+    font-weight: bold;
+    text-decoration: underline;
   }
 }
