@@ -251,7 +251,7 @@ i {
 }
 .article {
   padding-top: 10vh;
-  padding-bottom: 10vh;
+  /* padding-bottom: 10vh; */
   display: grid;
   grid-template-columns: repeat(44, 1fr);
   grid-template-rows: repeat(110, 1fr);
@@ -272,16 +272,16 @@ i {
   /* width: 70vw; */
   grid-row-start: 1;
   grid-row-end: -1;
-  grid-column-start: 4;
-  grid-column-end: 33;
+  grid-column-start: 13;
+  grid-column-end: 42;
 }
 .our-mission-box {
   height: inherit;
   /* width: 30vw; */
   grid-row-start: 22;
   grid-row-end: 90;
-  grid-column-start: 29;
-  grid-column-end: 42;
+  grid-column-start: 4;
+  grid-column-end: 17;
   font-size: 1.25vw;
   display: flex;
   flex-direction: column;
@@ -449,11 +449,18 @@ i {
     height: auto;
     width: 40px;
   }
-  .about-us {
+  .article {
     padding-top: 6vh;
-    padding-bottom: 6vh;
     grid-template-columns: 389fr 427fr;
     grid-template-rows: 1fr;
+  }
+  .our-mission-div {
+    height: auto;
+    grid-column: 2 / 3;
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .about-us-div {
     height: auto;
@@ -462,6 +469,16 @@ i {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  #about-us {
+    padding-bottom: 6vh;
+  }
+  .our-mission-box {
+    height: auto;
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    font-size: 2vw;
+    padding: 0.25em;
   }
   .about-us-box {
     height: auto;
