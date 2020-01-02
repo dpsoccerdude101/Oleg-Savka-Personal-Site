@@ -249,7 +249,7 @@ i {
   max-width: 100%;
   height: auto;
 }
-.about-us {
+.article {
   padding-top: 10vh;
   padding-bottom: 10vh;
   display: grid;
@@ -266,7 +266,31 @@ i {
   grid-column-start: 4;
   grid-column-end: 33;
 }
-.about-us-img {
+.our-mission-div{
+  height: auto;
+  width: auto;
+  /* width: 70vw; */
+  grid-row-start: 1;
+  grid-row-end: -1;
+  grid-column-start: 4;
+  grid-column-end: 33;
+}
+.our-mission-box {
+  height: inherit;
+  /* width: 30vw; */
+  grid-row-start: 22;
+  grid-row-end: 90;
+  grid-column-start: 29;
+  grid-column-end: 42;
+  font-size: 1.25vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 1em;
+  background-color: white;
+}
+.article-img {
   max-width: 100%;
   height: auto;
 }
@@ -289,7 +313,7 @@ i {
   margin-top: 1em;
   /* font-size: 1.25vw; */
 }
-h2.about-us-header {
+.article-header {
   text-align: center;
   color: rgb(47, 84, 150);
   font-weight: bold;
