@@ -1,24 +1,32 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500&display=swap");
 :root {
-  --font-color: #edf8f1;
+  --header-font-color: #edf8f1;
+  --main-font-color: black;
   --bg-color: #06065b;
   --bg-color-light: rgba(6, 6, 91, 0.75);
   --bg-yellow: rgba(249, 195, 0, 1);
   --bg-light-yellow: rgba(249, 195, 0, 0.75);
+  --bg-main: rgba(220, 220, 220, 1);
 }
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-li,
-a,
-button,
-p {
+header li,
+header a,
+header button,
+header p {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: var(--font-color);
+  color: var(--header-font-color);
+  text-decoration: none;
+}
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: var(--header-font-color);
   text-decoration: none;
 }
 body,
@@ -26,14 +34,31 @@ html {
   height: 100%;
 }
 i {
-  color: var(--font-color);
+  color: var(--header-font-color);
+}
+main {
+  background-color: var(--bg-main);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: var(--main-font-color);
+  text-decoration: none;
 }
 header {
+  overflow: hidden;
+  z-index: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0px 4%;
   background-color: var(--bg-color);
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.sticky + main {
+  padding-top: 83px;
 }
 img {
   max-width: 100%;
@@ -103,7 +128,7 @@ i {
   position: relative;
   margin: 0;
   overflow: hidden;
-  z-index: 1;
+  z-index: 2;
 }
 .flex-list ul {
   display: flex;
@@ -117,7 +142,7 @@ i {
   flex-grow: 1;
   flex-basis: auto;
   text-align: center;
-  border-left: 1px solid var(--font-color);
+  border-left: 1px solid var(--header-font-color);
 }
 .burger {
   display: none;
@@ -125,7 +150,7 @@ i {
 .burger div {
   width: 25px;
   height: 3px;
-  background-color: var(--font-color);
+  background-color: var(--header-font-color);
   margin: 5px;
   border-radius: 2px;
 }
@@ -144,9 +169,9 @@ i {
   width: initial;
 }
 .banner {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
     url("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/banner.jpg");
-  
+
   height: 70vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -161,7 +186,6 @@ i {
   align-self: center;
   justify-self: center;
   -ms-flex-align: center;
-
 }
 .banner-text {
   text-align: center;
@@ -174,7 +198,7 @@ i {
   justify-self: center;
   -ms-flex-align: center;
   height: 125px;
-/*   position: absolute;
+  /*   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); */
@@ -186,6 +210,85 @@ i {
   width: 65px;
   height: auto;
   border-radius: 50%;
+  border: 1px solid white;
+}
+.flex-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: gray;
+  height: 3em;
+}
+.ufcu-div {
+  height: auto;
+  width: 181px;
+}
+.ufcu-logo {
+  max-width: 100%;
+  height: auto;
+}
+.unwla-div {
+  height: auto;
+  width: 181px;
+}
+.unwla-logo {
+  max-width: 100%;
+  height: auto;
+}
+.ucc-div {
+  height: auto;
+  width: 181px;
+}
+.ucc-logo {
+  max-width: 100%;
+  height: auto;
+}
+.about-us{
+  padding-top: 60px;
+  padding-bottom: 60px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(44, 1fr);
+  grid-template-rows: repeat(110, 1fr);
+  /* grid-template-rows: 84px 1fr 84px; */
+}
+.about-us-div {
+  height: auto;
+  width: auto;
+  /* width: 70vw; */
+  grid-row-start: 1;
+  grid-row-end: -1;
+  grid-column-start: 4;
+  grid-column-end: 33;
+}
+.about-us-img {
+  max-width: 100%;
+  height: auto;
+}
+.about-us-box {
+  height: inherit;
+  /* width: 30vw; */
+  grid-row-start: 22;
+  grid-row-end: 90;
+  grid-column-start: 29;
+  grid-column-end: 42;
+  font-size: 1.25vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 1em;
+  background-color: white;
+}
+.about-us-paragraph {
+  margin-top: 1em;
+  /* font-size: 1.25vw; */
+}
+h2.about-us-header {
+  text-align: center;
+  color: rgb(47, 84, 150);
+  font-weight: bold;
+  text-decoration: underline;
 }
 @media screen and (max-width: 1024px) {
   .banner {
