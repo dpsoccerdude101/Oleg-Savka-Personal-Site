@@ -6,7 +6,7 @@
   --bg-color-light: rgba(6, 6, 91, 0.75);
   --bg-yellow: rgba(249, 195, 0, 1);
   --bg-light-yellow: rgba(249, 195, 0, 0.75);
-  --bg-main: rgba(220, 220, 220, 1);
+  --bg-main: #f0ead6;
 }
 * {
   box-sizing: border-box;
@@ -16,7 +16,8 @@
 header li,
 header a,
 header button,
-header p {
+header p,
+button {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -35,6 +36,7 @@ html {
 }
 .icon {
   color: var(--header-font-color);
+  transition: all 0.3s ease 0s;
 }
 main {
   background-color: var(--bg-main);
@@ -87,6 +89,7 @@ img {
 }
 #donate {
   grid-area: button;
+  box-shadow: 
 }
 .logo {
   cursor: pointer;
@@ -107,9 +110,6 @@ img {
 }
 .icon:hover {
   color: #0088a9;
-}
-.icon {
-  transition: all 0.3s ease 0s;
 }
 button {
   padding: 9px 25px;
@@ -222,8 +222,8 @@ i {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: gray;
-  height: 3em;
+  background-color: black;
+  height: 12em;
 }
 .ufcu-div {
   height: auto;
@@ -240,10 +240,6 @@ i {
 .unwla-logo {
   max-width: 100%;
   height: auto;
-}
-.ucc-div {
-  height: auto;
-  width: 181px;
 }
 .ucc-logo {
   max-width: 100%;
@@ -266,7 +262,7 @@ i {
   grid-column-start: 4;
   grid-column-end: 33;
 }
-.our-mission-div{
+.our-mission-div {
   height: auto;
   width: auto;
   /* width: 70vw; */
@@ -317,7 +313,34 @@ i {
   text-align: center;
   color: rgb(47, 84, 150);
   font-weight: bold;
-  text-decoration: underline;
+}
+.learn-more {
+  font-size: 1.125vw;
+  padding: 0.25em;
+  margin-left: auto;
+}
+.ucc-div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+}
+.ucc-div-img {
+  height: auto;
+  width: 120px;
+}
+.ucc-social {
+  width: inherit;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.ucc-social a:nth-child(1) {
+  margin-right: 2vw;
 }
 @media screen and (max-width: 1024px) {
   .banner {
@@ -336,6 +359,9 @@ i {
   }
   .flags {
     margin-left: 0.5em;
+  }
+  .flex-list ul {
+    flex-wrap: wrap;
   }
 }
 @media screen and (max-width: 850px) {
@@ -451,21 +477,17 @@ i {
   }
   .article {
     padding-top: 6vh;
-    grid-template-columns: 389fr 427fr;
-    grid-template-rows: 1fr;
+    display: flex;
+    flex-direction: column;
   }
   .our-mission-div {
     height: auto;
-    grid-column: 2 / 3;
-    grid-row: 1 / -1;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
   .about-us-div {
     height: auto;
-    grid-column: 1 / 2;
-    grid-row: 1 / -1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -475,16 +497,19 @@ i {
   }
   .our-mission-box {
     height: auto;
-    grid-column: 1 / 2;
-    grid-row: 1 / -1;
-    font-size: 2vw;
-    padding: 0.25em;
+    font-size: 20px;
   }
   .about-us-box {
     height: auto;
-    grid-column: 2 / 3;
-    grid-row: 1 / -1;
-    font-size: 2vw;
-    padding: 0.25em;
+    font-size: 20px;
+  }
+  .article-paragraph {
+    margin: 0.5em 0;
+  }
+  .learn-more {
+    font-size: 18px;
+  }
+  #help-ukraine {
+    display: block;
   }
 }
