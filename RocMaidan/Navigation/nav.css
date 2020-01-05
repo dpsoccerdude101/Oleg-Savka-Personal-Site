@@ -10,6 +10,9 @@
   /* #f0ead6 */
   --drop-shadow: rgba(0,0,0,0.5);
 }
+html {
+  scroll-behavior: smooth;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -557,5 +560,14 @@ i {
   }
   #help-ukraine {
     display: block;
+  }
+  .banner-text h2 {
+    font-size: 8vw;
+  }
+  .banner-text h1 {
+    font-size: 12vw;
+  }
+  #donate-banner {
+    font-size: 4vw;
   }
 }
