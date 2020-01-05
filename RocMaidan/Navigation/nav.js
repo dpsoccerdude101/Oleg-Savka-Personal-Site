@@ -2,7 +2,7 @@ const burger = document.querySelector("div.burger");
 const flexList = document.querySelector(".flex-list");
 const navLinks = document.querySelector(".nav-links");
 const header = document.getElementsByTagName("header")[0];
-let sticky = header.offsetTop;
+let sticky = 200;
 burger.addEventListener("click", () => {
   if (flexList.classList.contains("open")) {
     console.log(flexList.classList);
@@ -15,8 +15,11 @@ burger.addEventListener("click", () => {
     flexList.classList.toggle("open");
   }
 });
+console.log(header.offsetHeight);
+console.log(window.pageYOffset);
 window.onscroll = function() {
   stickyNav();
+  closeInvisibleNav();
 };
 /* window.onload = function() {
   setArticleRows();
@@ -28,8 +31,21 @@ window.onresize = function() {
 function stickyNav() {
   if (window.pageYOffset >= sticky) {
     header.classList.add("sticky");
-  } else {
+    header.classList.remove("invisible");
+    flexList.classList.add("stickyFlex");
+  } 
+  else {
     header.classList.remove("sticky");
+    flexList.classList.remove("stickyFlex")
+  }
+}
+function closeInvisibleNav() {
+  if (window.pageYOffset >= header.offsetHeight) {
+    if (window.pageYOffset <= 195) {
+      header.classList.add("invisible");
+    }
+  } else {
+    header.classList.remove("invisible");
   }
 }
 /* function setArticleRows() {

@@ -26,7 +26,15 @@ button {
   color: var(--header-font-color);
   text-decoration: none;
 }
-h2 {
+.banner-text h2 {
+  font-size: 4vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: var(--header-font-color);
+  text-decoration: none;
+}
+.banner-text h1 {
+  font-size: 6vw;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   color: var(--header-font-color);
@@ -48,21 +56,30 @@ main {
   text-decoration: none;
 }
 header {
+  position: absolute;
+  top: 0;
+  width: 100%;
   overflow: hidden;
   z-index: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0px 4%;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
+  text-shadow: 1px 1px 2px black;
 }
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%;
+  background-color: var(--bg-color);
+  transition: top 0.3s ease-in-out;
+}
+.invisible {
+  top: -93px;
+  transition: top 0.5s ease-in-out;
 }
 .sticky + main {
-  padding-top: 83px;
+  /* padding-top: 83px; */
 }
 img {
   max-width: 100%;
@@ -91,7 +108,6 @@ img {
 }
 #donate {
   grid-area: button;
-  box-shadow: 
 }
 .logo {
   cursor: pointer;
@@ -178,10 +194,10 @@ i {
 }
 .banner {
   background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
-    url("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/banner.jpg");
-
-  height: 70vh;
-  background-position: center;
+    url("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/denys-rodionenko-G__p-KB1bj4-unsplash.jpg");
+    /* url("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/banner.jpg"); */
+  height: 75vh;
+  background-position: 50% 20%;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -196,7 +212,9 @@ i {
   -ms-flex-align: center;
 }
 .banner-text {
-  text-align: center;
+     text-align: center;
+     text-shadow: 1px 1px 2px black;
+     /*
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -204,15 +222,22 @@ i {
   align-items: center;
   align-self: center;
   justify-self: center;
-  -ms-flex-align: center;
-  height: 125px;
+  -ms-flex-align: center; */
+  /* height: 125px; */
   /*   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); */
 }
 #donate-banner {
-  font-size: 22px;
+  font-size: 2vw;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid white;
+  padding: 4px 12.5px;
+  border-radius: 25px;
+}
+#donate-banner:hover {
+  background-color: rgba(0,0,0,0.25);
 }
 #rocMaidanSquareLogo {
   width: 65px;
@@ -405,6 +430,12 @@ i {
   header {
     padding: 0% 4%;
     height: 91.5px;
+    position: fixed;
+    top: 0;
+  }
+  .invisible {
+    top: 0;
+    transition:  0.5s ease-in-out;
   }
   .flex-list {
     box-shadow: inset 0px 1px white;
@@ -416,7 +447,7 @@ i {
     overflow: hidden;
     top: 91.5px;
     right: 0px;
-    background-color: var(--bg-color);
+    background-color: rgba(0,0,0,0.8);
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-end;
@@ -458,6 +489,12 @@ i {
     text-align: center;
     height: 0;
     overflow: hidden;
+  }
+  .flex-list li>a {
+    text-shadow: 1px 1px 2px black;
+  }
+  .flex-list.stickyFlex {
+    background-color: var(--bg-color);
   }
   #social a {
     font-size: 2em;
