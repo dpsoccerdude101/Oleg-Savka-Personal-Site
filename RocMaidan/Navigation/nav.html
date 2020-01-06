@@ -24,8 +24,9 @@
       <nav class="flex-list">
         <ul class="nav-links">
           <li><a href="#">Home Page</a></li>
-          <li><a href="#our-mission">Mission</a></li>
+          <!-- <li><a href="#our-mission">Mission</a></li> -->
           <li><a href="#about-us">About</a></li>
+          <li><a href="#">Team</a></li>
           <li><a href="#">News</a></li>
           <li><a href="#">Volunteer</a></li>
           <li><a href="#">Events</a></li>
@@ -139,7 +140,7 @@
           <button class="learn-more">Learn More</button>
         </div>
       </section>
-      <section class="article" id="about-us">
+       <section class="article" id="about-us">
         <div class="about-us-div">
           <img
             src="https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/About%20Us.png"
@@ -161,18 +162,51 @@
           <button class="learn-more">Learn More</button>
         </div>
       </section>
+      <!-- <section class="article" id="our-volunteers">
+        <div class="our-mission-div">
+          <img
+            src="https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/banner.jpg"
+            alt="Picture of Volodymyr Pavlyuk and Oleg Lebedko at Intervol"
+            class="article-img"
+          />
+        </div>
+        <div class="our-mission-box">
+          <h2 class="article-header">
+            Our Volunteers
+          </h2>
+          <p class="article-paragraph">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+            obcaecati eius hic earum quo! Maiores libero dolorem tenetur,
+            debitis veniam nesciunt voluptatibus nulla quam, earum impedit
+            recusandae cumque praesentium dolor. Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Dolore quidem eaque odio expedita rem
+            nemo maiores, quos esse fuga tempora cupiditate aperiam aut ex
+            beatae minima, perspiciatis quaerat ipsa dolor.
+          </p>
+          <button class="learn-more">Learn More</button>
+        </div>
+      </section> -->
     </main>
     <footer class="flex-footer">
       <!-- <h2>Under Construction by Pavlyuk Productions & Savka Studios</h2> -->
       <div class="partners-grid">
-        <h2>Our Partners</h2>
-        <div class="ucc-div">
-          <div class="ucc-div-img">
+        <h2 id="our-partners">Our Partners</h2>
+        <div class="ucc-unwla-flex">
+          <div class="ucc-div">
             <a href="http://www.uccofrochester.org/" class="ucc-link">
               <img
                 src="https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/ucc-logo-transparent.png"
                 alt="Ukrainian Cultural Center Logo"
                 class="ucc-logo"
+              />
+            </a>
+          </div>
+          <div class="unwla-div">
+            <a href="https://unwla.org">
+              <img
+                src="https://unwla.org/themes/main/assets/images/logo.png"
+                alt="Ukrainian National Women's League of America Logo"
+                class="unwla-logo"
               />
             </a>
           </div>
@@ -186,14 +220,9 @@
             />
           </a>
         </div>
-        <div class="unwla-div">
-          <img
-            src="https://unwla.org/themes/main/assets/images/logo.png"
-            alt="Ukrainian National Women's League of America Logo"
-            class="unwla-logo"
-          />
-        </div>
-        div
+      </div>
+      <div class="middle-foot">
+        <button class="contact-us">Contact Us</button>
         <div id="social-footer">
           <a href="https://www.facebook.com/rocmaidan/"
             ><i
@@ -218,7 +247,40 @@
           ></a>
         </div>
       </div>
+      <div class="legal">
+        <p>
+          ROC Maidan is a subsidiary of the Ukrainian Cultural Center of
+          Rochester, a 501-c3 not-for-profit organization
+        </p>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
     </footer>
+    <form action="#" class="contact-us-form" name="contact-us-form">
+      <fieldset>
+        <legend></legend>
+        <label for="contact-us-form" class="name"
+          >Your Name (required)<input type="text" class="name-field"
+        /></label>
+        <label for="contact-us-form" class="email"
+          >Your Email (required)<input
+            type="email"
+            name=""
+            id=""
+            class="email-field"
+        /></label>
+      </fieldset>
+    </form>
+    <article class="sub-footer">
+      <p>Made with ❤️ by Pavlyuk Productions & Savka Studios</p>
+      <span
+        >Copyright @ <span id="copyright-year">2020</span> RocMaidan | All
+        Rights Reserved</span
+      >
+    </article>
   </body>
   <script src="nav.js"></script>
 </html>

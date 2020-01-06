@@ -8,7 +8,7 @@
   --bg-light-yellow: rgba(249, 195, 0, 0.75);
   --bg-main: white;
   /* #f0ead6 */
-  --drop-shadow: rgba(0,0,0,0.5);
+  --drop-shadow: rgba(0, 0, 0, 0.5);
 }
 html {
   scroll-behavior: smooth;
@@ -198,7 +198,7 @@ i {
 .banner {
   background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
     url("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/denys-rodionenko-G__p-KB1bj4-unsplash.jpg");
-    /* url("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/banner.jpg"); */
+  /* url("https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/RocMaidan/banner.jpg"); */
   height: 75vh;
   background-position: 50% 20%;
   background-repeat: no-repeat;
@@ -215,9 +215,9 @@ i {
   -ms-flex-align: center;
 }
 .banner-text {
-     text-align: center;
-     text-shadow: 1px 1px 2px black;
-     /*
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  /*
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -234,13 +234,13 @@ i {
 }
 #donate-banner {
   font-size: 2vw;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   border: 1px solid white;
   padding: 4px 12.5px;
   border-radius: 25px;
 }
 #donate-banner:hover {
-  background-color: rgba(0,0,0,0.25);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 #rocMaidanSquareLogo {
   width: 65px;
@@ -249,18 +249,45 @@ i {
   border: 1px solid white;
 }
 .flex-footer {
+  height: 10vw;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #f5f5f5;
-  height: 12em;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #eee;
+  /* #f5f5f5 */
+  padding: 0 1vw;
 }
 .flex-footer * {
   color: #999;
+  text-align: center;
+}
+.flex-footer i {
+  font-size: 4vw;
+}
+.flex-footer .fa-facebook-official {
+  color: #4267b2;
+}
+.flex-footer .fa-twitter-square {
+  color: #1da1f2;
+}
+.flex-footer .fa-instagram {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .ufcu-div {
   height: auto;
-  width: 181px;
+  width: 20vw;
+  grid-area: ufcu;
+  margin: auto auto;
 }
 .ufcu-logo {
   max-width: 100%;
@@ -268,18 +295,14 @@ i {
 }
 .unwla-div {
   height: auto;
-  width: 181px;
+  width: 6vw;
 }
 .unwla-logo {
   max-width: 100%;
   height: auto;
 }
-.ucc-logo {
-  max-width: 100%;
-  height: auto;
-}
 .article {
-  padding-top: 10vh;
+  padding: 10vh 0;
   /* padding-bottom: 10vh; */
   display: grid;
   grid-template-columns: repeat(44, 1fr);
@@ -357,27 +380,85 @@ i {
   margin-left: auto;
 }
 .ucc-div {
+  height: auto;
+  width: 7vw;
+}
+.ucc-logo {
+  max-width: 100%;
+  height: auto;
+}
+.partners-grid {
+  height: inherit;
+  max-width: 33vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 3fr;
+  grid-template-areas:
+    "ourPartners ourPartners "
+    "uccUnwlaFlex ufcu"
+  /* background-color: #f5f5f5; */
+}
+#our-partners {
+  grid-area: ourPartners;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  text-decoration: underline;
+  /* filter: drop-shadow(1px 1px 2px var(--drop-shadow)); */
+}
+.ucc-unwla-flex {
+  grid-area: uccUnwlaFlex;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.contact-us {
+  font-size: 2vw;
+  color: var(--header-font-color);
+  margin-bottom: auto;
+  margin-top: calc(auto / 2);
+  white-space: nowrap;
+  border: 2px solid black;
+}
+.footer-links{
+  list-style: none;
+}
+.contact-us-form {
+  display: none;
+}
+.middle-foot {
+  position: relative;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  width: 180px;
+  justify-content: flex-start;
 }
-.ucc-div-img {
-  height: auto;
-  width: 120px;
+#social-footer {
+  margin-bottom: auto;
 }
-.ucc-social {
-  width: inherit;
-  padding: 0 1em;
+.sub-footer {
+  color: #888;
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 0 1vw;
+  font-size: 1.5vw;
 }
-.ucc-social a:nth-child(1) {
-  margin-right: 2vw;
+.sub-footer p {
+  display: inline;
+  margin-right: auto;
+}
+.sub-footer span {
+  display: inline;
+}
+.legal {
+  max-width: 25vw;
+}
+.legal * {
+  text-align: left;
 }
 @media screen and (max-width: 1024px) {
   .banner {
@@ -438,7 +519,7 @@ i {
   }
   .invisible {
     top: 0;
-    transition:  0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
   }
   .flex-list {
     box-shadow: inset 0px 1px white;
@@ -450,7 +531,7 @@ i {
     overflow: hidden;
     top: 91.5px;
     right: 0px;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-end;
@@ -493,7 +574,7 @@ i {
     height: 0;
     overflow: hidden;
   }
-  .flex-list li>a {
+  .flex-list li > a {
     text-shadow: 1px 1px 2px black;
   }
   .flex-list.stickyFlex {
@@ -525,7 +606,7 @@ i {
     width: 40px;
   }
   .article {
-    padding-top: 6vh;
+    padding: 6vh 0;
     display: flex;
     flex-direction: column;
   }

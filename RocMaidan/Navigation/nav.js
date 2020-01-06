@@ -21,13 +21,9 @@ window.onscroll = function() {
   stickyNav();
   closeInvisibleNav();
 };
-/* window.onload = function() {
-  setArticleRows();
+ window.onload = function() {
+  // setCopyright();
 }
-window.onresize = function() {
-  setArticleRows();
-} */
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function stickyNav() {
   if (window.pageYOffset >= sticky) {
     header.classList.add("sticky");
@@ -48,12 +44,6 @@ function closeInvisibleNav() {
     header.classList.remove("invisible");
   }
 }
-/* function setArticleRows() {
-  let articles = document.getElementsByClassName("article");
-  let viewWidth = (document.querySelector("body")).offsetWidth;
-  let fr = viewWidth / 30;
-  for (let count = 0; count < articles.length; count = count + 1) {
-    console.log(articles[count]);
-     articles[count].style.gridTemplateRows = `repeat(12, ${fr}px)`;
-  } 
+/* function setCopyright() {
+  (document.getElementById("copyright-year")).write(new Date().getFullYear());
 } */
