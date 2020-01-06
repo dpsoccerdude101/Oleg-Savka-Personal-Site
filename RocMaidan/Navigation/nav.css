@@ -416,12 +416,12 @@ i {
   align-items: center;
 }
 .contact-us {
-  font-size: 2vw;
+  font-size: 1.5vw;
   color: var(--header-font-color);
   margin-bottom: auto;
+  margin-top: 1.5vw;
   margin-top: calc(auto / 2);
   white-space: nowrap;
-  border: 2px solid black;
 }
 .footer-links{
   list-style: none;
