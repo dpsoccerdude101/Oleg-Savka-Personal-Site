@@ -651,4 +651,16 @@ i {
   #donate-banner {
     font-size: 4vw;
   }
+  .flex-footer {
+    display: none;
+  }
+  .sub-footer {
+    font-size: 4vw;
+    flex-direction: column;
+    align-items: center;
+    margin: auto 0;
+  }
+  .sub-footer p {
+    margin: 0;
+  }
 }
