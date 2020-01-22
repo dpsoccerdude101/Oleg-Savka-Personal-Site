@@ -9,6 +9,8 @@
   --bg-main: white;
   /* #f0ead6 */
   --drop-shadow: rgba(0, 0, 0, 0.3);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
 }
 html {
   scroll-behavior: smooth;
@@ -254,7 +256,6 @@ i {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #eee;
   /* #f5f5f5 */
   padding: 0 1vw;
 }
@@ -395,7 +396,7 @@ i {
   grid-template-rows: 1fr 3fr;
   grid-template-areas:
     "ourPartners ourPartners "
-    "uccUnwlaFlex ufcu"
+    "uccUnwlaFlex ufcu";
   /* background-color: #f5f5f5; */
 }
 #our-partners {
@@ -418,12 +419,13 @@ i {
 .contact-us {
   font-size: 1.5vw;
   color: var(--header-font-color);
-  margin-bottom: auto;
+  border: 2px solid gray;
+  /*   margin-bottom: auto;
   margin-top: 1.5vw;
-  margin-top: calc(auto / 2);
+  margin-top: calc(auto / 2); */
   white-space: nowrap;
 }
-.footer-links{
+.footer-links {
   list-style: none;
 }
 .contact-us-form {
@@ -433,11 +435,11 @@ i {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
 }
-#social-footer {
+/* #social-footer {
   margin-bottom: auto;
-}
+} */
 .sub-footer {
   color: #888;
   background-color: rgba(0, 0, 0, 0.1);
@@ -459,6 +461,13 @@ i {
 }
 .legal * {
   text-align: left;
+}
+.footer-styling-fieldset {
+  background-color: #eee;
+  border: 0;
+}
+legend {
+  text-align: center;
 }
 @media screen and (max-width: 1024px) {
   .banner {
