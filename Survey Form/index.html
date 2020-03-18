@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <h1 id="title">Survey Form</h1>
+    <p id="description">Please Take My Survey</p>
+    <fieldset>
+      <form action="" id="survey-form">
+        <label for="survey-form" class="name" id="name-label"
+          >Your Name (required)<input
+            type="text"
+            id="name"
+            required
+            placeholder="Jane Doe"
+        /></label>
+        <label for="survey-form" id="email-label"
+          >Your Name (required)<input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="yourEmail@email.com"
+            required
+        /></label>
+        <label for="survey-form" id="number-label"
+          >Your Review of this Survery (0-10)<input
+            type="number"
+            name="number"
+            id="number"
+            min="0"
+            max="10"
+            placeholder="9"
+        /></label>
+        <label for="survey-form"
+          >What is your favorite color?<select name="dropdown" id="dropdown">
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+          </select></label
+        >
+        <label for="survey-form"
+          >Are you dog person or a cat person?
+          <input type="radio" name="pet" id="dog" value="dog" />
+          <label for="dog">Dog</label>
+          <input type="radio" name="pet" id="cat" value="cat" />
+          <label for="cat">Cat</label>
+          /></label
+        >
+
+        <p>Choose you Career:</p>
+
+        <div>
+          <input
+            type="checkbox"
+            id="software-engineer"
+            name="software-engineer"
+            value="software-engineer"
+            checked
+          />
+          <label for="software-engineer">Software Engineer</label>
+        </div>
+
+        <div>
+          <input type="checkbox" id="student" name="student" value="student" />
+          <label for="student">Student</label>
+        </div>
+
+        <label for="survery-form"
+          >Any Additional Comments?<textarea
+            name="text-area"
+            id="text-area"
+            cols="30"
+            rows="10"
+          ></textarea
+        ></label>
+        <button type="submit" id="submit">Submit</button>
+      </form>
+    </fieldset>
+  </body>
+</html>
