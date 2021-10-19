@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/dpsoccerdude101/dpsoccerdude101.github.io#readme",
   "dependencies": {
+    "@swc/helpers": "^0.2.13",
     "haunted": "^4.8.2",
     "marked": "^3.0.7"
   },
