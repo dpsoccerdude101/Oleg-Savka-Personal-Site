@@ -1,0 +1,212 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #0000ff;}
+.s4 { color: #008000; font-weight: bold;}
+.s5 { color: #808080; font-weight: bold; font-style: italic;}
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">import </span>javafx.application.Application;
+<a name="l2"><span class="ln">2    </span></a><span class="s0">import </span>javafx.concurrent.Worker;
+<a name="l3"><span class="ln">3    </span></a><span class="s0">import </span>javafx.geometry.Insets;
+<a name="l4"><span class="ln">4    </span></a><span class="s0">import </span>javafx.scene.Scene;
+<a name="l5"><span class="ln">5    </span></a><span class="s0">import </span>javafx.scene.control.ButtonType;
+<a name="l6"><span class="ln">6    </span></a><span class="s0">import </span>javafx.scene.control.Dialog;
+<a name="l7"><span class="ln">7    </span></a><span class="s0">import </span>javafx.scene.layout.StackPane;
+<a name="l8"><span class="ln">8    </span></a><span class="s0">import </span>javafx.scene.web.WebEngine;
+<a name="l9"><span class="ln">9    </span></a><span class="s0">import </span>javafx.scene.web.WebView;
+<a name="l10"><span class="ln">10   </span></a><span class="s0">import </span>javafx.stage.Stage;
+<a name="l11"><span class="ln">11   </span></a><span class="s0">import </span>javafx.util.Pair;
+<a name="l12"><span class="ln">12   </span></a><span class="s0">import </span>netscape.javascript.JSObject;
+<a name="l13"><span class="ln">13   </span></a><span class="s0">import </span>org.w3c.dom.Document;
+<a name="l14"><span class="ln">14   </span></a><span class="s0">import </span>org.w3c.dom.Element;
+<a name="l15"><span class="ln">15   </span></a><span class="s0">import </span>org.w3c.dom.events.EventListener;
+<a name="l16"><span class="ln">16   </span></a><span class="s0">import </span>org.w3c.dom.events.EventTarget;
+<a name="l17"><span class="ln">17   </span></a>
+<a name="l18"><span class="ln">18   </span></a><span class="s0">import </span>java.io.BufferedReader;
+<a name="l19"><span class="ln">19   </span></a><span class="s0">import </span>java.io.IOException;
+<a name="l20"><span class="ln">20   </span></a><span class="s0">import </span>java.io.InputStreamReader;
+<a name="l21"><span class="ln">21   </span></a><span class="s0">import </span>java.net.MalformedURLException;
+<a name="l22"><span class="ln">22   </span></a><span class="s0">import </span>java.net.URL;
+<a name="l23"><span class="ln">23   </span></a><span class="s0">import </span>java.util.ArrayList;
+<a name="l24"><span class="ln">24   </span></a><span class="s0">import </span>java.util.Iterator;
+<a name="l25"><span class="ln">25   </span></a><span class="s0">import </span>java.util.List;
+<a name="l26"><span class="ln">26   </span></a>
+<a name="l27"><span class="ln">27   </span></a><span class="s0">public class </span>Main <span class="s0">extends </span>Application {
+<a name="l28"><span class="ln">28   </span></a>    <span class="s2">// for communication to the Javascript engine.</span>
+<a name="l29"><span class="ln">29   </span></a>    <span class="s0">private </span>JSObject javascriptConnector;
+<a name="l30"><span class="ln">30   </span></a>    <span class="s0">private </span>Invoice invoice;
+<a name="l31"><span class="ln">31   </span></a>    <span class="s0">private </span>User user;
+<a name="l32"><span class="ln">32   </span></a>
+<a name="l33"><span class="ln">33   </span></a>    <span class="s2">// for communication from the Javascript engine. //</span>
+<a name="l34"><span class="ln">34   </span></a>    <span class="s0">private </span>JavaConnector javaConnector = <span class="s0">new </span>JavaConnector();
+<a name="l35"><span class="ln">35   </span></a>
+<a name="l36"><span class="ln">36   </span></a>    <span class="s0">private static </span>ArrayList&lt;User&gt; usersList = <span class="s0">new </span>ArrayList&lt;User&gt;();
+<a name="l37"><span class="ln">37   </span></a>
+<a name="l38"><span class="ln">38   </span></a>    <span class="s0">public static void </span>main(String[] args) <span class="s0">throws </span>IOException {
+<a name="l39"><span class="ln">39   </span></a>        <span class="s2">//grabs username and password keys off of github repo</span>
+<a name="l40"><span class="ln">40   </span></a>        List&lt;String&gt; info = getUserDataFile();
+<a name="l41"><span class="ln">41   </span></a>        Iterator iterator = info.iterator();
+<a name="l42"><span class="ln">42   </span></a>
+<a name="l43"><span class="ln">43   </span></a>        <span class="s2">//adds those to list</span>
+<a name="l44"><span class="ln">44   </span></a>        <span class="s0">for </span>(<span class="s0">int </span>count = <span class="s3">0</span>; count &lt; info.size(); count++){
+<a name="l45"><span class="ln">45   </span></a>            String[] userInfo = (info.get(count)).split(<span class="s4">&quot; &quot;</span>);
+<a name="l46"><span class="ln">46   </span></a>            usersList.add(<span class="s0">new </span>User(userInfo[<span class="s3">0</span>], userInfo[<span class="s3">1</span>]));
+<a name="l47"><span class="ln">47   </span></a>        }
+<a name="l48"><span class="ln">48   </span></a>        launch(args);
+<a name="l49"><span class="ln">49   </span></a>    }
+<a name="l50"><span class="ln">50   </span></a>
+<a name="l51"><span class="ln">51   </span></a>    @Override
+<a name="l52"><span class="ln">52   </span></a>    <span class="s0">public void </span>start(Stage primaryStage) {
+<a name="l53"><span class="ln">53   </span></a>        primaryStage.setTitle(<span class="s4">&quot;Mom and Pop's Clothing Store&quot;</span>);
+<a name="l54"><span class="ln">54   </span></a>        StackPane pane = <span class="s0">new </span>StackPane ();
+<a name="l55"><span class="ln">55   </span></a>        pane.setPadding(<span class="s0">new </span>Insets(<span class="s3">15</span>, <span class="s3">5</span>, <span class="s3">5</span>, <span class="s3">5</span>));
+<a name="l56"><span class="ln">56   </span></a>
+<a name="l57"><span class="ln">57   </span></a>        <span class="s0">final </span>WebView browser = <span class="s0">new </span>WebView();
+<a name="l58"><span class="ln">58   </span></a>        WebEngine webEngine = browser.getEngine();
+<a name="l59"><span class="ln">59   </span></a>        webEngine.setJavaScriptEnabled(<span class="s0">true</span>);
+<a name="l60"><span class="ln">60   </span></a>        URL url = <span class="s0">null</span>;
+<a name="l61"><span class="ln">61   </span></a>        <span class="s0">try </span>{
+<a name="l62"><span class="ln">62   </span></a>            url = <span class="s0">new </span>URL(<span class="s4">&quot;https://dpsoccerdude101.github.io/dpsoccerdude101.github.io/Lab07%20(Attempt%20%232)/LoginView.html&quot;</span>);
+<a name="l63"><span class="ln">63   </span></a>            webEngine.load(url.toExternalForm());
+<a name="l64"><span class="ln">64   </span></a>        } <span class="s0">catch </span>(MalformedURLException e) {
+<a name="l65"><span class="ln">65   </span></a>            <span class="s2">// TODO Auto-generated catch block</span>
+<a name="l66"><span class="ln">66   </span></a>            e.printStackTrace();
+<a name="l67"><span class="ln">67   </span></a>            webEngine.loadContent(<span class="s4">&quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;There's a bloody error.&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);
+<a name="l68"><span class="ln">68   </span></a>        }
+<a name="l69"><span class="ln">69   </span></a>        webEngine.getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) -&gt; {
+<a name="l70"><span class="ln">70   </span></a>            <span class="s0">if </span>(Worker.State.SUCCEEDED == newValue) {
+<a name="l71"><span class="ln">71   </span></a>                <span class="s2">// set an interface object named 'javaConnector' in the web engine's page</span>
+<a name="l72"><span class="ln">72   </span></a>                JSObject window = (JSObject) webEngine.executeScript(<span class="s4">&quot;window&quot;</span>);
+<a name="l73"><span class="ln">73   </span></a>                window.setMember(<span class="s4">&quot;javaConnector&quot;</span>, javaConnector);
+<a name="l74"><span class="ln">74   </span></a>
+<a name="l75"><span class="ln">75   </span></a>                <span class="s2">// get the Javascript connector object.</span>
+<a name="l76"><span class="ln">76   </span></a>                javascriptConnector = (JSObject) webEngine.executeScript(<span class="s4">&quot;getJsConnector()&quot;</span>);
+<a name="l77"><span class="ln">77   </span></a>            }
+<a name="l78"><span class="ln">78   </span></a>        });
+<a name="l79"><span class="ln">79   </span></a>
+<a name="l80"><span class="ln">80   </span></a>        pane.getChildren().add(browser);
+<a name="l81"><span class="ln">81   </span></a>
+<a name="l82"><span class="ln">82   </span></a>
+<a name="l83"><span class="ln">83   </span></a>        Scene scene = <span class="s0">new </span>Scene(pane, <span class="s3">300</span>, <span class="s3">265</span>);
+<a name="l84"><span class="ln">84   </span></a>        <span class="s2">//600, 650</span>
+<a name="l85"><span class="ln">85   </span></a>        primaryStage.setScene(scene);
+<a name="l86"><span class="ln">86   </span></a>        primaryStage.setResizable(<span class="s0">false</span>);
+<a name="l87"><span class="ln">87   </span></a>
+<a name="l88"><span class="ln">88   </span></a>        primaryStage.show();
+<a name="l89"><span class="ln">89   </span></a>
+<a name="l90"><span class="ln">90   </span></a>        <span class="s2">//allows for the display of alerts</span>
+<a name="l91"><span class="ln">91   </span></a>        browser.getEngine().setOnAlert(event -&gt; showAlert(event.getData()));
+<a name="l92"><span class="ln">92   </span></a>
+<a name="l93"><span class="ln">93   </span></a>        webEngine.getLoadWorker().stateProperty().addListener((ov, oldState, newState) -&gt; {
+<a name="l94"><span class="ln">94   </span></a>            <span class="s0">if </span>(newState == Worker.State.SUCCEEDED) {
+<a name="l95"><span class="ln">95   </span></a>                <span class="s2">//if login screen is presented</span>
+<a name="l96"><span class="ln">96   </span></a>                <span class="s2">//then check if toJavaLogin method has been called</span>
+<a name="l97"><span class="ln">97   </span></a>                <span class="s2">//if not then wait for it to be called</span>
+<a name="l98"><span class="ln">98   </span></a>                <span class="s2">//if so then check if passed or failed</span>
+<a name="l99"><span class="ln">99   </span></a>                Document doc = webEngine.getDocument();
+<a name="l100"><span class="ln">100  </span></a>                Element title = (Element) doc.getElementById(<span class="s4">&quot;title&quot;</span>);
+<a name="l101"><span class="ln">101  </span></a>                EventListener listener = <span class="s0">new </span>EventListener() {
+<a name="l102"><span class="ln">102  </span></a>                    @Override
+<a name="l103"><span class="ln">103  </span></a>                    <span class="s0">public void </span>handleEvent(org.w3c.dom.events.Event ev) {
+<a name="l104"><span class="ln">104  </span></a>                        <span class="s2">//changeDimension synthetic event has been called</span>
+<a name="l105"><span class="ln">105  </span></a>                        <span class="s2">//Therefore, if title == Lab07, then the new dimensions = those of Login</span>
+<a name="l106"><span class="ln">106  </span></a>                        <span class="s2">//and vice versa</span>
+<a name="l107"><span class="ln">107  </span></a>
+<a name="l108"><span class="ln">108  </span></a>                        <span class="s0">if </span>((title.getTextContent().equals(<span class="s4">&quot;Lab07&quot;</span>))) {
+<a name="l109"><span class="ln">109  </span></a>                            primaryStage.setWidth(<span class="s3">325</span>);
+<a name="l110"><span class="ln">110  </span></a>                            primaryStage.setHeight(<span class="s3">315</span>);
+<a name="l111"><span class="ln">111  </span></a>                        }
+<a name="l112"><span class="ln">112  </span></a>                        <span class="s0">if </span>(((title.getTextContent().equals(<span class="s4">&quot;Login&quot;</span>)))) {
+<a name="l113"><span class="ln">113  </span></a>                            primaryStage.setWidth(<span class="s3">572</span>);
+<a name="l114"><span class="ln">114  </span></a>                            primaryStage.setHeight(<span class="s3">660</span>);
+<a name="l115"><span class="ln">115  </span></a>                        }
+<a name="l116"><span class="ln">116  </span></a>                    }
+<a name="l117"><span class="ln">117  </span></a>                };
+<a name="l118"><span class="ln">118  </span></a>                Element button = (Element) doc.getElementById(<span class="s4">&quot;back&quot;</span>);
+<a name="l119"><span class="ln">119  </span></a>                ((EventTarget) button).addEventListener(<span class="s4">&quot;changeDimensions&quot;</span>, listener, <span class="s0">false</span>);
+<a name="l120"><span class="ln">120  </span></a>            }
+<a name="l121"><span class="ln">121  </span></a>        });
+<a name="l122"><span class="ln">122  </span></a>    }
+<a name="l123"><span class="ln">123  </span></a>    <span class="s0">private static </span>ArrayList&lt;String&gt; getUserDataFile () <span class="s0">throws </span>IOException {
+<a name="l124"><span class="ln">124  </span></a>        URL users = <span class="s0">new </span>URL(<span class="s4">&quot;https://raw.githubusercontent.com/dpsoccerdude101/dpsoccerdude101.github.io/master/Lab07%20(Attempt%20%232)/Users.txt&quot;</span>);
+<a name="l125"><span class="ln">125  </span></a>        BufferedReader input = <span class="s0">new </span>BufferedReader(<span class="s0">new </span>InputStreamReader(users.openStream()));
+<a name="l126"><span class="ln">126  </span></a>        ArrayList&lt;String&gt; list = <span class="s0">new </span>ArrayList&lt;&gt;();
+<a name="l127"><span class="ln">127  </span></a>        String inputLine;
+<a name="l128"><span class="ln">128  </span></a>        <span class="s0">while </span>((inputLine = input.readLine()) != <span class="s0">null</span>) {
+<a name="l129"><span class="ln">129  </span></a>            list.add(inputLine);
+<a name="l130"><span class="ln">130  </span></a>        }
+<a name="l131"><span class="ln">131  </span></a>        input.close();
+<a name="l132"><span class="ln">132  </span></a>        <span class="s0">return </span>list;
+<a name="l133"><span class="ln">133  </span></a>    }
+<a name="l134"><span class="ln">134  </span></a>    <span class="s0">private static boolean </span>contains (User thatUser) {
+<a name="l135"><span class="ln">135  </span></a>        <span class="s0">for </span>(<span class="s0">int </span>count = <span class="s3">0</span>; count &lt; usersList.size(); count++) {
+<a name="l136"><span class="ln">136  </span></a>            User tempUser = usersList.get(count);
+<a name="l137"><span class="ln">137  </span></a>            <span class="s0">if </span>(tempUser.getUsername().equals(thatUser.getUsername())) {
+<a name="l138"><span class="ln">138  </span></a>                <span class="s0">if </span>(tempUser.getPassword().equals(thatUser.getPassword())) {
+<a name="l139"><span class="ln">139  </span></a>                    <span class="s0">return true</span>;
+<a name="l140"><span class="ln">140  </span></a>                }
+<a name="l141"><span class="ln">141  </span></a>            }
+<a name="l142"><span class="ln">142  </span></a>        }
+<a name="l143"><span class="ln">143  </span></a>        <span class="s0">return false</span>;
+<a name="l144"><span class="ln">144  </span></a>    }
+<a name="l145"><span class="ln">145  </span></a>    <span class="s0">private void </span>showAlert(String message) {
+<a name="l146"><span class="ln">146  </span></a>        Dialog&lt;Void&gt; alert = <span class="s0">new </span>Dialog&lt;&gt;();
+<a name="l147"><span class="ln">147  </span></a>        alert.getDialogPane().setContentText(message);
+<a name="l148"><span class="ln">148  </span></a>        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
+<a name="l149"><span class="ln">149  </span></a>        alert.showAndWait();
+<a name="l150"><span class="ln">150  </span></a>    }
+<a name="l151"><span class="ln">151  </span></a>    <span class="s0">public class </span>JavaConnector {
+<a name="l152"><span class="ln">152  </span></a>
+<a name="l153"><span class="ln">153  </span></a>        <span class="s0">private </span>String value;
+<a name="l154"><span class="ln">154  </span></a>        <span class="s2">/**</span>
+<a name="l155"><span class="ln">155  </span></a>         <span class="s2">* called when the JS side wants a String to be read.</span>
+<a name="l156"><span class="ln">156  </span></a>         <span class="s2">*</span>
+<a name="l157"><span class="ln">157  </span></a>         <span class="s2">* </span><span class="s5">@param </span><span class="s2">value</span>
+<a name="l158"><span class="ln">158  </span></a>         <span class="s2">*         the String to read</span>
+<a name="l159"><span class="ln">159  </span></a>         <span class="s2">*/</span>
+<a name="l160"><span class="ln">160  </span></a>        <span class="s0">public void </span>toJavaData(String value) {
+<a name="l161"><span class="ln">161  </span></a>            <span class="s0">this</span>.value = value;
+<a name="l162"><span class="ln">162  </span></a>            String[] tokens = value.split(<span class="s4">&quot;&amp;&quot;</span>);
+<a name="l163"><span class="ln">163  </span></a>            Double[] tokensDouble = <span class="s0">new </span>Double[tokens.length];
+<a name="l164"><span class="ln">164  </span></a>            <span class="s0">for </span>(<span class="s0">int </span>count = <span class="s3">0</span>; count &lt; tokens.length; count++) {
+<a name="l165"><span class="ln">165  </span></a>                String[] miniTokens = tokens[count].split(<span class="s4">&quot;=&quot;</span>);
+<a name="l166"><span class="ln">166  </span></a>                tokensDouble[count] = Double.parseDouble(miniTokens[<span class="s3">1</span>]);
+<a name="l167"><span class="ln">167  </span></a>            }
+<a name="l168"><span class="ln">168  </span></a>            invoice = <span class="s0">new </span>Invoice(tokensDouble[<span class="s3">0</span>], tokensDouble[<span class="s3">1</span>], tokensDouble[<span class="s3">2</span>], tokensDouble[<span class="s3">3</span>], tokensDouble[<span class="s3">4</span>]);
+<a name="l169"><span class="ln">169  </span></a>
+<a name="l170"><span class="ln">170  </span></a>            <span class="s0">if </span>(<span class="s0">this</span>.value != <span class="s0">null</span>) {
+<a name="l171"><span class="ln">171  </span></a>                javascriptConnector.call(<span class="s4">&quot;showResult&quot;</span>, (<span class="s4">&quot;$&quot; </span>+ String.format(<span class="s4">&quot;%.2f&quot;</span>, invoice.getTotalBill())));
+<a name="l172"><span class="ln">172  </span></a>            }
+<a name="l173"><span class="ln">173  </span></a>        }
+<a name="l174"><span class="ln">174  </span></a>        <span class="s0">public void </span>toJavaLogin(String value) {
+<a name="l175"><span class="ln">175  </span></a>            <span class="s0">this</span>.value = value;
+<a name="l176"><span class="ln">176  </span></a>            String[] tokens = value.split(<span class="s4">&quot;&amp;&quot;</span>);
+<a name="l177"><span class="ln">177  </span></a>            Pair&lt;String, String&gt; pair = <span class="s0">new </span>Pair&lt;&gt;((tokens[<span class="s3">0</span>].split(<span class="s4">&quot;=&quot;</span>))[<span class="s3">1</span>], (tokens[<span class="s3">1</span>].split(<span class="s4">&quot;=&quot;</span>))[<span class="s3">1</span>]);
+<a name="l178"><span class="ln">178  </span></a>            user = <span class="s0">new </span>User(pair.getKey(), pair.getValue());
+<a name="l179"><span class="ln">179  </span></a>
+<a name="l180"><span class="ln">180  </span></a>            <span class="s0">if </span>(contains(user)) {
+<a name="l181"><span class="ln">181  </span></a>                javascriptConnector.call(<span class="s4">&quot;goToQueryPage&quot;</span>);
+<a name="l182"><span class="ln">182  </span></a>            }
+<a name="l183"><span class="ln">183  </span></a>            <span class="s0">else </span>{
+<a name="l184"><span class="ln">184  </span></a>                javascriptConnector.call(<span class="s4">&quot;loginFailed&quot;</span>);
+<a name="l185"><span class="ln">185  </span></a>            }
+<a name="l186"><span class="ln">186  </span></a>        }
+<a name="l187"><span class="ln">187  </span></a>    }
+<a name="l188"><span class="ln">188  </span></a>}
+<a name="l189"><span class="ln">189  </span></a>
+<a name="l190"><span class="ln">190  </span></a></pre>
+</body>
+</html>

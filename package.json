@@ -1,0 +1,28 @@
+{
+  "name": "dpsoccerdude101.github.io",
+  "version": "1.0.0",
+  "description": "My Portfolio Site",
+  "main": "index.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "rm -rf .parcel-cache dist && parcel build index.html --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpsoccerdude101/dpsoccerdude101.github.io.git"
+  },
+  "author": "Dennis Pavlyuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpsoccerdude101/dpsoccerdude101.github.io/issues"
+  },
+  "homepage": "https://github.com/dpsoccerdude101/dpsoccerdude101.github.io#readme",
+  "dependencies": {
+    "haunted": "^4.8.2",
+    "marked": "^3.0.7"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  }
+}

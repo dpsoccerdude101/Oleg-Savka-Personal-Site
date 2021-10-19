@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Product Landing Page</title>
+    <style>
+      @media screen and (min-width: 600px) {
+        main {
+          border: 2px solid black;
+        }
+      }
+      nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+      }
+    </style>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </head>
+  <body>
+    <header id="header" style="position: fixed;">
+      <div id="fit-image"><img src="" alt="" id="header-img" /></div>
+      <nav id="nav-bar">
+        <ul>
+          <li>
+            <a href="#link-1" class="nav-link"><button>Link #1</button></a>
+            <a href="#link-2" class="nav-link"><button>Link #2</button></a>
+            <a href="#link-3" class="nav-link"><button>Link #3</button></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="link-1"></div>
+      <div id="link-2"></div>
+      <div id="link-3"></div>
+
+      <video controls width="250">
+        <source src="./flower.webm" type="video/webm" />
+
+        <source src="./flower.mp4" type="video/mp4" />
+
+        Sorry, your browser doesn't support embedded videos.
+      </video>
+
+      <fieldset>
+        <form action="" id="form">
+          <label for=""
+            >Your Email<input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="yourEmail@email.com"
+          /></label>
+          <label for=""
+            >Submit<input
+              id="submit"
+              formaction=" https://www.freecodecamp.com/email-submit"
+              type="submit"
+              value="Submit"
+          /></label>
+        </form>
+      </fieldset>
+    </main>
+  </body>
+</html>
