@@ -6,6 +6,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "dev": "parcel index.html",
+    "get-fonts": "get-google-fonts -i 'https://fonts.googleapis.com/css?family=Roboto&effect=shadow-multiple'",
     "build": "rm -rf .parcel-cache dist && parcel build index.html --public-url ./"
   },
   "repository": {
