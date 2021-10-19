@@ -1,0 +1,38 @@
+h1 {
+    font-size: 1.4em;
+}
+body {
+    font-family: 'Times New Roman', Times, serif;
+    max-width: 624px;
+    align-content: center;
+    margin: auto;
+}
+header *,section *:not(article)  {
+    margin: 4px;
+    line-height: 1;
+}
+header {
+    text-align: center;
+}
+section * {
+    font-size: 0.95em;
+}
+header>p {
+    font-size: 0.95em;
+}
+h2 {
+    font-weight: bold;
+}
+span {
+    float: right;
+}
+li {
+    padding-left: 2em;
+
+}
+ul {
+    padding: 0 1em 0;
+}
+h3>span {
+    font-weight: normal;
+}

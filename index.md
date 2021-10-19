@@ -1,4 +1,5 @@
 # Hi there 👋, I am Dennis Pavlyuk, a first-generation Ukrainian-American.
+
 "You get what you expect, and you deserve what you tolerate." -Mark Graban.
 
 Ex-Professional Student of Schooling 👔

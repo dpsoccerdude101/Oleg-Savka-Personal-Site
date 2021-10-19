@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="LoginView.css" />
+    <script src="LoginView.js"></script>
+    <title id="title">Login</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="title">
+        <h1>Mom and Pop's Clothing Store</h1>
+      </div>
+      <div class="input">
+        <form action="" name="userForm" id="userForm" onsubmit="event.preventDefault();validateLogin()">
+          <div class="username">
+            <label for="username" id="usernameLabel">User ID:</label>
+            <input type="text" name="username" id="username" required/>
+          </div>
+          <div class="password">
+            <label for="password" id="passwordLabel">Password:</label>
+            <input type="password" name="password" id="password" required/>
+          </div>
+        </form>
+      </div>
+      <div class="submit">
+        <button type="submit" form="userForm" id="back">Submit</button>
+      </div>
+    </div>
+  </body>
+</html>
