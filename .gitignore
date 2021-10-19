@@ -1,5 +1,7 @@
 node_modules
 dist
 .parcel-cache
-fonts
 package-lock.json
+.DS_Store
+dist-ssr
+*.local

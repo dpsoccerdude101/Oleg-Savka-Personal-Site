@@ -4,10 +4,10 @@
  * @param {URLSearchParams} url The Url to Markdown Rescource
  * @returns {String}  The Markdown String
  */
-export const getMarkdown = async (url) => {
-  const markdownPromise = await fetch(url);
-  const markdownText = await markdownPromise.text();
-  return markdownText;
+export const getText = async (url) => {
+  const textPromise = await fetch(url);
+  const text = await textPromise.text();
+  return text;
 };
 
 /**
@@ -15,8 +15,8 @@ export const getMarkdown = async (url) => {
  * @param  {String} str The template string
  * @return {Node}       The template HTML
  */
- export const stringToHTML = (str) => {
-	const parser = new DOMParser();
-	const doc = parser.parseFromString(str, 'text/html');
-	return doc.body;
+export const stringToHTML = (str) => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(str, "text/html");
+  return doc.body.childNodes;
 };
