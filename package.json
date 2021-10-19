@@ -2,12 +2,12 @@
   "name": "dpsoccerdude101.github.io",
   "version": "1.0.0",
   "description": "My Portfolio Site",
-  "main": "index.js",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "dev": "parcel index.html",
     "get-fonts": "get-google-fonts -i 'https://fonts.googleapis.com/css?family=Roboto&effect=shadow-multiple'",
-    "build": "rm -rf .parcel-cache dist && parcel build index.html --public-url ./"
+    "build": "parcel build index.html --no-optimize --public-url ./",
+    "serve": "rm -rf .parcel-cache dist && parcel build index.html --no-optimize --public-url ./"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   "dependencies": {
     "@swc/helpers": "^0.2.13",
     "haunted": "^4.8.2",
-    "marked": "^3.0.7"
+    "marked": "^3.0.7",
+    "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
     "get-google-fonts": "^1.2.2",

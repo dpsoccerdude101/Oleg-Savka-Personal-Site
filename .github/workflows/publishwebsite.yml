@@ -25,7 +25,7 @@ jobs:
     - name: Get-Fonts
       run: npm run get-fonts --if-present
     - name: Build
-      run: npm run build --if-present
+      run: npm run serve --if-present
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
