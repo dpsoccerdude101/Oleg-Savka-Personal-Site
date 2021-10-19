@@ -1,22 +1,13 @@
-# Hi there 👋, I am Dennis Pavlyuk, a first-generation Ukrainian-American.
+# Hi! My name is Oleg Savka.
 
-"You get what you expect, and you deserve what you tolerate." -Mark Graban.
+I am a business administration student with goals of learning finance and marketing to the best possible potential in order to influence people in a positive way in the future. I am currently looking for new opportunities and experiences while also developing my own personal brand through ongoing creative pursuits and endeavors.
 
-Ex-Professional Student of Schooling 👔
-Amateur Student of Existence 🌠
+Areas of Interest:
+📈Finance/Economics
+📲Marketing
+⚽️Futbol
+💪Fitness/Lifting
+✍️Art/Creativity
+✈️Travel/Culture
 
-Previous Areas of Interest
-- 🧠 Neuroscience 
-- 💻👀 Computer Vision
-- 💻⛓️ Applied Cryptography
-- 💰👎👍 Economics/Game Theory
-- 🤕🧒🧠 Developmental Trauma 
-- 💊📈🧠 Nootropics 
-- 🧬 Epigenetics 
-- ✨🧬🧠 Evolutionary Psychology
-- 🙇‍♂️The Human Condition
-- 🏓Table Tennis
-- 🥋 Judo
-- 🛩️ Aeromodeling
-- 🧑‍🍳 New-American Cuisine 
-- ⚽ Futbol
+If you are a Real Madrid fan, you are automatically my friend. Hala Madrid!
