@@ -24,6 +24,7 @@
     "marked": "^3.0.7"
   },
   "devDependencies": {
+    "get-google-fonts": "^1.2.2",
     "parcel": "^2.0.0"
   }
 }
